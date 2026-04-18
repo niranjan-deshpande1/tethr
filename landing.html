@@ -19,23 +19,25 @@ body{
   -moz-osx-font-smoothing:grayscale;
   color:#0f172a;
   overflow-x:hidden;
-  background:linear-gradient(160deg,#dce8ff 0%,#eef4ff 20%,#f8faff 45%,#ffffff 60%,#edf3ff 80%,#d8e8ff 100%);
-  background-attachment:fixed;
+  background:#eef4ff;
+  position:relative;
 }
 
 /* ═══════════════════════════════════════
    ANIMATED BLOBS
 ═══════════════════════════════════════ */
-.blob{
-  position:fixed;border-radius:50%;filter:blur(90px);
-  opacity:.35;pointer-events:none;z-index:0;
-}
-.blob-1{width:600px;height:600px;background:#c7d9ff;top:-100px;right:-100px;animation:float1 35s ease-in-out infinite;}
-.blob-2{width:500px;height:500px;background:#dceeff;bottom:20%;left:-80px;animation:float2 42s ease-in-out infinite;}
-.blob-3{width:400px;height:400px;background:#e8f0ff;top:40%;right:15%;animation:float3 28s ease-in-out infinite;}
-@keyframes float1{0%,100%{transform:translate(0,0) scale(1);}50%{transform:translate(-60px,80px) scale(1.1);}}
-@keyframes float2{0%,100%{transform:translate(0,0) scale(1);}50%{transform:translate(80px,-60px) scale(0.9);}}
-@keyframes float3{0%,100%{transform:translate(0,0) scale(1);}33%{transform:translate(-40px,60px) scale(1.05);}66%{transform:translate(50px,-30px) scale(0.95);}}
+.gradient-bg{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden;}
+.gradient-bg .blob{position:absolute;border-radius:50%;filter:blur(80px);}
+.blob-1{width:700px;height:600px;background:#7eb5ff;opacity:.7;top:-150px;left:-100px;}
+.blob-2{width:500px;height:500px;background:#a5c8ff;opacity:.6;top:20%;right:-80px;}
+.blob-3{width:500px;height:450px;background:#ff9d6e;opacity:.5;bottom:10%;left:20%;}
+.blob-4{width:400px;height:400px;background:#6aabff;opacity:.55;top:50%;right:25%;}
+.blob-5{width:350px;height:320px;background:#ffb38a;opacity:.45;top:10%;left:40%;}
+@keyframes drift1{0%{transform:translate(0,0) scale(1);}33%{transform:translate(60px,80px) scale(1.08);}66%{transform:translate(-40px,40px) scale(0.96);}100%{transform:translate(30px,-60px) scale(1.04);}}
+@keyframes drift2{0%{transform:translate(0,0) scale(1);}50%{transform:translate(-70px,-50px) scale(1.1);}100%{transform:translate(40px,60px) scale(0.94);}}
+@keyframes drift3{0%{transform:translate(0,0) scale(1);}40%{transform:translate(80px,-40px) scale(1.06);}100%{transform:translate(-30px,70px) scale(0.97);}}
+@keyframes drift4{0%{transform:translate(0,0) scale(1);}60%{transform:translate(-50px,-70px) scale(1.05);}100%{transform:translate(60px,30px) scale(0.98);}}
+@keyframes drift5{0%{transform:translate(0,0) scale(1);}50%{transform:translate(40px,60px) scale(1.04);}100%{transform:translate(-60px,-40px) scale(0.96);}}
 
 /* ═══════════════════════════════════════
    TOKENS
@@ -48,11 +50,20 @@ body{
    GLASS RECIPE — LIGHT BG
 ═══════════════════════════════════════ */
 .glass{
-  background:rgba(255,255,255,0.5);
-  border:1px solid rgba(255,255,255,0.75);
-  backdrop-filter:blur(28px) saturate(180%) brightness(1.05);
-  -webkit-backdrop-filter:blur(28px) saturate(180%) brightness(1.05);
-  box-shadow:0 0 0 .5px rgba(255,255,255,0.8) inset,0 8px 40px rgba(100,140,255,0.1),0 2px 8px rgba(0,0,0,0.04);
+  position:relative;
+  background:rgba(255,255,255,0.08);
+  backdrop-filter:blur(20px) saturate(180%) brightness(1.02);
+  -webkit-backdrop-filter:blur(20px) saturate(180%) brightness(1.02);
+  border:1px solid rgba(255,255,255,0.35);
+  border-top:1px solid rgba(255,255,255,0.7);
+  border-left:1px solid rgba(255,255,255,0.45);
+  box-shadow:0 0 0 .5px rgba(255,255,255,0.6) inset,0 1.5px 0 0 rgba(255,255,255,0.85) inset,0 4px 20px rgba(180,210,255,0.12),0 1px 3px rgba(0,0,0,0.04);
+}
+.glass::after{
+  content:'';position:absolute;top:0;left:0;right:0;height:50%;
+  border-radius:20px 20px 0 0;
+  background:linear-gradient(to bottom,rgba(255,255,255,0.18) 0%,rgba(255,255,255,0) 100%);
+  pointer-events:none;
 }
 .glass-dark{
   background:rgba(10,14,28,0.85);
@@ -73,15 +84,22 @@ nav,section,footer,.above{position:relative;z-index:1;}
   position:fixed;top:20px;left:50%;transform:translateX(-50%);
   z-index:100;border-radius:100px;padding:10px 20px;
   display:flex;align-items:center;gap:40px;
-  background:rgba(255,255,255,0.6);
-  border:1px solid rgba(255,255,255,0.8);
-  backdrop-filter:blur(40px) saturate(200%);
-  -webkit-backdrop-filter:blur(40px) saturate(200%);
-  box-shadow:0 4px 24px rgba(100,140,255,0.12),0 1px 0 rgba(255,255,255,0.9) inset;
+  background:rgba(255,255,255,0.03);
+  border:1px solid rgba(255,255,255,0.45);
+  border-top:1px solid rgba(255,255,255,0.82);
+  backdrop-filter:blur(6px) saturate(120%);
+  -webkit-backdrop-filter:blur(6px) saturate(120%);
+  box-shadow:0 1px 0 rgba(255,255,255,0.9) inset,0 2px 16px rgba(180,210,255,0.1),0 1px 4px rgba(0,0,0,0.04);
   transition:background .3s,box-shadow .3s;
   white-space:nowrap;
 }
-.navbar.scrolled{background:rgba(255,255,255,0.78);box-shadow:0 6px 32px rgba(100,140,255,0.18),0 1px 0 rgba(255,255,255,0.9) inset;}
+.navbar::after{
+  content:'';position:absolute;top:0;left:0;right:0;height:50%;
+  border-radius:100px 100px 0 0;
+  background:linear-gradient(to bottom,rgba(255,255,255,0.1) 0%,rgba(255,255,255,0) 100%);
+  pointer-events:none;z-index:0;
+}
+.navbar.scrolled{background:rgba(255,255,255,0.06);border-top-color:rgba(255,255,255,0.9);box-shadow:0 1px 0 rgba(255,255,255,0.95) inset,0 4px 20px rgba(180,210,255,0.14),0 1px 6px rgba(0,0,0,0.05);}
 .nav-logo{font-size:17px;font-weight:800;letter-spacing:.06em;color:var(--navy);text-decoration:none;}
 .nav-links{display:flex;gap:28px;list-style:none;}
 .nav-links a{font-size:14px;color:var(--muted);text-decoration:none;transition:color .2s;}
@@ -95,9 +113,13 @@ nav,section,footer,.above{position:relative;z-index:1;}
 .hero{
   min-height:100vh;display:flex;flex-direction:column;
   align-items:center;justify-content:center;text-align:center;
-  padding:130px 40px 80px;
+  padding:130px 40px 80px;position:relative;
 }
-.hero-label{font-size:11px;letter-spacing:.22em;color:var(--orange);font-weight:600;text-transform:uppercase;margin-bottom:24px;}
+.hero::after{
+  content:'';position:absolute;bottom:0;left:0;right:0;height:120px;
+  background:linear-gradient(to bottom,transparent,#f4f6f9);
+  pointer-events:none;z-index:2;
+}
 .hero-h1{
   font-size:clamp(52px,8vw,96px);font-weight:800;color:var(--navy);
   line-height:.95;letter-spacing:-.03em;margin-bottom:24px;
@@ -105,18 +127,42 @@ nav,section,footer,.above{position:relative;z-index:1;}
 .hero-sub{font-size:18px;color:var(--muted);max-width:480px;line-height:1.75;margin:0 auto 48px;}
 .hero-ctas{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;}
 .btn-primary{
-  background:var(--orange);color:#000;border-radius:100px;padding:16px 32px;
+  background:rgba(255,107,53,0.18);color:#0f172a;border-radius:100px;padding:16px 32px;
   font-size:16px;font-weight:700;text-decoration:none;display:inline-block;font-family:inherit;
-  transition:transform .2s,box-shadow .2s;border:none;cursor:pointer;
+  border:1px solid rgba(255,107,53,0.45);
+  border-top:1px solid rgba(255,150,100,0.75);
+  backdrop-filter:blur(8px) saturate(130%);
+  -webkit-backdrop-filter:blur(8px) saturate(130%);
+  box-shadow:0 1px 0 rgba(255,150,100,0.5) inset,0 2px 12px rgba(255,107,53,0.15);
+  position:relative;overflow:hidden;
+  transition:background .3s,transform .2s,box-shadow .2s;cursor:pointer;
 }
-.btn-primary:hover{transform:scale(1.02);box-shadow:0 0 30px rgba(255,107,53,0.35);}
+.btn-primary::after{
+  content:'';position:absolute;top:0;left:0;right:0;height:50%;
+  border-radius:100px 100px 0 0;
+  background:linear-gradient(to bottom,rgba(255,180,140,0.2) 0%,rgba(255,255,255,0) 100%);
+  pointer-events:none;
+}
+.btn-primary:hover{background:rgba(255,107,53,0.28);transform:translateY(-1px);box-shadow:0 1px 0 rgba(255,150,100,0.6) inset,0 4px 20px rgba(255,107,53,0.2);}
 .btn-secondary{
-  background:rgba(255,255,255,0.5);color:var(--navy);
-  border:1px solid rgba(255,255,255,0.75);border-radius:100px;padding:16px 32px;
+  background:rgba(255,255,255,0.04);color:var(--navy);
+  border:1px solid rgba(255,255,255,0.5);
+  border-top:1px solid rgba(255,255,255,0.85);
+  border-radius:100px;padding:16px 32px;
   font-size:16px;font-weight:600;text-decoration:none;display:inline-block;
-  backdrop-filter:blur(12px);transition:background .2s;
+  backdrop-filter:blur(8px) saturate(130%);
+  -webkit-backdrop-filter:blur(8px) saturate(130%);
+  box-shadow:0 1px 0 rgba(255,255,255,0.85) inset,0 2px 12px rgba(180,210,255,0.08),0 1px 3px rgba(0,0,0,0.04);
+  position:relative;overflow:hidden;
+  transition:background .3s,transform .2s,box-shadow .2s;
 }
-.btn-secondary:hover{background:rgba(255,255,255,0.72);}
+.btn-secondary::after{
+  content:'';position:absolute;top:0;left:0;right:0;height:50%;
+  border-radius:100px 100px 0 0;
+  background:linear-gradient(to bottom,rgba(255,255,255,0.15) 0%,rgba(255,255,255,0) 100%);
+  pointer-events:none;
+}
+.btn-secondary:hover{background:rgba(255,255,255,0.08);transform:translateY(-1px);box-shadow:0 1px 0 rgba(255,255,255,0.95) inset,0 4px 20px rgba(180,210,255,0.14),0 2px 8px rgba(0,0,0,0.06);}
 .hero-note{font-size:13px;color:var(--faint);margin-top:20px;}
 .scroll-line{
   width:2px;height:40px;margin:60px auto 0;
@@ -165,81 +211,6 @@ nav,section,footer,.above{position:relative;z-index:1;}
 .section-h2{font-size:clamp(36px,5vw,52px);font-weight:800;color:var(--navy);letter-spacing:-.02em;line-height:1.05;}
 
 /* ═══════════════════════════════════════
-   PRODUCT SHOWCASE (S3)
-═══════════════════════════════════════ */
-.product-section{padding:120px 60px;}
-.product-inner{
-  max-width:1100px;margin:0 auto;
-  display:grid;grid-template-columns:42% 58%;gap:80px;align-items:center;
-}
-.product-body{font-size:17px;color:var(--muted);line-height:1.8;margin-top:20px;}
-.product-link{display:inline-block;margin-top:28px;color:var(--orange);font-size:15px;font-weight:600;text-decoration:none;transition:gap .2s;}
-.product-link:hover .arrow{transform:translateX(4px);}
-.arrow{display:inline-block;transition:transform .2s;margin-left:4px;}
-
-/* Layered tilted cards */
-.cards-stack{position:relative;height:400px;}
-.stack-card{
-  position:absolute;border-radius:16px;padding:20px;
-  background:rgba(10,14,28,0.85);
-  border:1px solid rgba(255,255,255,0.09);
-  backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
-  box-shadow:0 20px 60px rgba(0,0,0,0.3);
-  color:#fff;font-size:13px;
-  transition:transform .4s cubic-bezier(.34,1.56,.64,1);
-}
-.sc1{top:30px;left:0;right:50px;transform:rotate(-3deg);z-index:1;}
-.sc2{top:10px;left:25px;right:25px;transform:rotate(.5deg);z-index:2;}
-.sc3{top:0;left:50px;right:0;transform:rotate(2.5deg);z-index:3;}
-.cards-stack:hover .sc1{transform:rotate(-4deg) translateX(-18px);}
-.cards-stack:hover .sc3{transform:rotate(3.5deg) translateX(18px);}
-.card-chrome{display:flex;gap:6px;margin-bottom:14px;}
-.dot{width:10px;height:10px;border-radius:50%;}
-.card-title-sm{font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-bottom:10px;}
-.comp-row{display:flex;justify-content:space-between;align-items:center;padding:6px 0;border-bottom:1px solid rgba(255,255,255,0.05);}
-.comp-name{font-size:12px;color:rgba(255,255,255,0.7);}
-.comp-price{font-size:12px;color:rgba(255,255,255,0.5);}
-.comp-badge{width:8px;height:8px;border-radius:50%;}
-.chat-msg-u{background:#fff;color:#0f172a;border-radius:12px 12px 3px 12px;padding:8px 12px;font-size:12px;text-align:right;margin-bottom:8px;display:inline-block;float:right;clear:both;}
-.chat-msg-ai{background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.08);border-radius:3px 12px 12px 12px;padding:10px 12px;font-size:12px;color:rgba(255,255,255,0.8);line-height:1.6;clear:both;}
-.check-row{display:flex;align-items:flex-start;gap:8px;padding:5px 0;font-size:12px;color:rgba(255,255,255,0.75);}
-.check-box{width:14px;height:14px;border-radius:4px;border:1.5px solid var(--orange);flex-shrink:0;margin-top:1px;display:flex;align-items:center;justify-content:center;}
-.check-box.done{background:var(--orange);border-color:var(--orange);}
-
-/* ═══════════════════════════════════════
-   FLOW DIAGRAM (S3B)
-═══════════════════════════════════════ */
-.flow-section{padding:120px 60px;background:rgba(255,255,255,0.22);}
-.flow-inner{max-width:1000px;margin:0 auto;text-align:center;}
-.flow-row{display:flex;align-items:center;justify-content:center;gap:0;margin-top:72px;flex-wrap:nowrap;}
-.flow-node{
-  flex-shrink:0;text-align:center;
-  display:flex;flex-direction:column;align-items:center;gap:10px;
-  opacity:0;transform:translateY(16px);
-  transition:opacity .55s cubic-bezier(.16,1,.3,1),transform .55s cubic-bezier(.16,1,.3,1);
-}
-.flow-node.fn-on{opacity:1;transform:none;}
-.flow-node-num{
-  font-size:11px;font-weight:700;letter-spacing:.14em;
-  color:var(--orange);line-height:1;
-}
-.flow-node-icon-wrap{
-  width:44px;height:44px;border-radius:12px;
-  background:rgba(255,255,255,0.65);
-  border:1px solid rgba(255,255,255,0.9);
-  display:flex;align-items:center;justify-content:center;
-  box-shadow:0 2px 12px rgba(100,140,255,0.08);
-}
-.flow-node-icon-wrap svg{width:18px;height:18px;stroke:var(--navy);stroke-width:1.5;fill:none;stroke-linecap:round;stroke-linejoin:round;}
-.flow-node-label{font-size:13px;font-weight:600;color:var(--navy);white-space:nowrap;}
-.flow-connector{
-  flex-shrink:0;display:flex;align-items:center;width:56px;margin-bottom:22px;
-}
-.flow-line{height:1px;background:rgba(15,23,42,0.12);flex:1;transform-origin:left;transform:scaleX(0);transition:transform .5s ease;}
-.flow-line.on{transform:scaleX(1);}
-.flow-note{font-size:14px;color:var(--faint);margin-top:48px;letter-spacing:.01em;}
-
-/* ═══════════════════════════════════════
    FEATURE CARDS (S4)
 ═══════════════════════════════════════ */
 .features-section{padding:120px 60px;}
@@ -285,64 +256,99 @@ nav,section,footer,.above{position:relative;z-index:1;}
 .cap-desc{font-size:13px;color:var(--muted);line-height:1.65;}
 
 /* ═══════════════════════════════════════
-   HOW IT WORKS (S5)
+   HOW IT WORKS — INTERACTIVE (S5)
 ═══════════════════════════════════════ */
-.how-section{padding:120px 60px;}
-.how-inner{max-width:720px;margin:0 auto;text-align:center;}
-.steps-col{margin-top:80px;text-align:left;}
-.step-row{
-  display:flex;align-items:flex-start;gap:32px;
-  padding-bottom:64px;position:relative;
+.hiw-inner{position:relative;z-index:1;max-width:1100px;margin:0 auto;}
+.hiw-grid{display:flex;flex-direction:column;gap:24px;}
+@media(min-width:1024px){.hiw-grid{flex-direction:row;gap:48px;align-items:stretch;}}
+/* Mockup card */
+.hiw-mockup{
+  flex:1;min-width:0;border-radius:20px;
+  border:1px solid rgba(255,255,255,0.06);
+  background:rgba(14,14,17,0.88);
+  backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
+  overflow:hidden;
+  box-shadow:0 24px 64px rgba(0,0,0,0.18),0 0 1px rgba(255,255,255,0.05);
+  min-height:380px;
 }
-.step-row:not(:last-child)::after{
-  content:'';position:absolute;left:28px;top:64px;
-  width:2px;height:calc(100% - 24px);
-  background:linear-gradient(to bottom,var(--orange),rgba(255,107,53,0.1));
-}
-.step-num{font-size:88px;font-weight:800;color:var(--orange);opacity:.15;min-width:60px;line-height:1;user-select:none;}
-.step-h{font-size:26px;font-weight:700;color:var(--navy);margin-top:8px;}
-.step-p{font-size:16px;color:var(--muted);line-height:1.75;margin-top:10px;}
-
-/* ═══════════════════════════════════════
-   DEMO (S6)
-═══════════════════════════════════════ */
-.demo-section{padding:120px 60px;text-align:center;}
-.demo-card{
-  max-width:760px;margin:0 auto;text-align:left;
-  border-radius:24px;overflow:hidden;
-  background:rgba(10,12,24,0.85);
-  border:1px solid rgba(255,255,255,0.09);
-  backdrop-filter:blur(32px);-webkit-backdrop-filter:blur(32px);
-  box-shadow:0 60px 120px rgba(0,0,0,0.25),0 0 0 .5px rgba(255,255,255,0.06) inset;
-}
-.demo-chrome{
-  background:rgba(255,255,255,0.04);
+.hiw-chrome{
+  background:rgba(255,255,255,0.03);
   border-bottom:1px solid rgba(255,255,255,0.06);
-  padding:14px 20px;display:flex;align-items:center;gap:8px;
+  padding:12px 18px;display:flex;align-items:center;gap:10px;
 }
-.demo-dot{width:12px;height:12px;border-radius:50%;}
-.demo-title{flex:1;text-align:center;font-size:13px;color:rgba(255,255,255,0.4);}
-.demo-body{padding:24px;min-height:340px;display:flex;flex-direction:column;gap:0;}
-.demo-timestamp{font-size:12px;color:rgba(255,255,255,0.25);text-align:center;margin-bottom:16px;}
-.dmsg-u{
-  background:#fff;color:#0f172a;border-radius:18px 18px 4px 18px;
-  padding:12px 16px;font-size:15px;font-weight:500;
-  max-width:65%;align-self:flex-end;margin-left:auto;margin-bottom:16px;
+.hiw-dots{display:flex;gap:6px;}
+.hiw-dots span{width:11px;height:11px;border-radius:50%;display:block;}
+.hiw-chrome-title{font-size:12px;color:rgba(255,255,255,0.3);letter-spacing:.05em;margin:0 auto;}
+.hiw-mockup-body{padding:28px;}
+.hiw-state-label{font-size:9px;letter-spacing:.18em;color:#FF6B35;font-weight:600;margin-bottom:16px;}
+.hiw-input-wrap{
+  font-size:17px;color:rgba(255,255,255,0.9);line-height:1.5;margin-bottom:14px;
+  background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);
+  border-radius:12px;padding:16px 18px;
 }
-.dmsg-ai{
-  background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.08);
-  border-radius:4px 18px 18px 18px;padding:16px 18px;
-  font-size:14px;color:rgba(255,255,255,0.82);line-height:1.75;
-  max-width:88%;white-space:pre-wrap;
+.hiw-cursor{color:#FF6B35;animation:hiw-blink 1s steps(1) infinite;}
+@keyframes hiw-blink{0%,100%{opacity:1}50%{opacity:0}}
+.hiw-hint{font-size:13px;color:rgba(255,255,255,0.3);margin-top:10px;}
+.hiw-work-item{
+  display:flex;align-items:center;gap:10px;
+  font-size:13px;color:rgba(255,255,255,0.4);
+  margin-bottom:14px;transition:color .3s;
 }
-.tw-cursor{display:inline-block;width:2px;height:1em;background:var(--orange);vertical-align:text-bottom;margin-left:1px;animation:blink .65s steps(1) infinite;}
-.typing-indicator{display:flex;gap:5px;align-items:center;padding:4px 0;}
-.typing-dot{width:6px;height:6px;border-radius:50%;background:var(--orange);}
-@keyframes pulse-dot{0%,80%,100%{transform:scale(0);opacity:.3;}40%{transform:scale(1);opacity:1;}}
-.typing-dot:nth-child(1){animation:pulse-dot 1.2s ease-in-out infinite;}
-.typing-dot:nth-child(2){animation:pulse-dot 1.2s ease-in-out infinite .2s;}
-.typing-dot:nth-child(3){animation:pulse-dot 1.2s ease-in-out infinite .4s;}
-.typing-label{font-size:13px;color:rgba(255,255,255,0.4);margin-left:6px;}
+.hiw-work-item.done{color:rgba(255,255,255,0.8);}
+.hiw-work-item.active{color:white;}
+.hiw-dot{width:7px;height:7px;border-radius:50%;flex-shrink:0;}
+.hiw-dot.orange{background:#FF6B35;}
+.hiw-dot.blue{background:#6ab0ff;animation:hiw-pulse 1.2s ease-in-out infinite;}
+.hiw-dot.grey{background:rgba(255,255,255,0.2);}
+@keyframes hiw-pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(.7)}}
+.hiw-output-item{
+  display:flex;gap:10px;font-size:13px;
+  color:rgba(255,255,255,0.8);margin-bottom:10px;line-height:1.6;
+}
+.hiw-arrow{color:#FF6B35;flex-shrink:0;}
+.hiw-session-note{
+  margin-top:20px;font-size:11px;color:rgba(255,255,255,0.25);
+  letter-spacing:.04em;border-top:1px solid rgba(255,255,255,0.06);padding-top:14px;
+}
+/* Step cards */
+.hiw-steps-col{display:flex;flex-direction:column;gap:12px;width:340px;flex-shrink:0;}
+@media(max-width:1023px){.hiw-steps-col{width:100%;}.hiw-mockup{min-height:320px;}}
+.hiw-step{
+  width:100%;text-align:left;cursor:pointer;position:relative;
+  border-radius:16px;border:1px solid rgba(0,0,0,0.07);
+  background:#ffffff;padding:20px 22px;
+  transition:border-color .3s,background .3s;overflow:hidden;
+  font-family:inherit;
+}
+.hiw-step.active{background:rgba(255,107,53,0.03);border-color:rgba(255,107,53,0.25);}
+.hiw-badge{
+  display:flex;align-items:center;justify-content:center;
+  width:28px;height:28px;border-radius:9px;
+  font-size:12px;font-weight:600;flex-shrink:0;
+  background:rgba(0,0,0,0.05);color:#a1a1aa;transition:all .3s;
+}
+.hiw-step.active .hiw-badge{background:linear-gradient(135deg,#FF6B35,#ff9a35);color:white;}
+.hiw-step-title{font-size:15px;font-weight:700;color:#0f172a;margin:12px 0 0;}
+.hiw-step-desc{
+  font-size:14px;color:#52525b;line-height:1.6;margin-top:8px;
+  max-height:0;overflow:hidden;
+  transition:max-height .4s ease,opacity .3s;opacity:0;
+}
+.hiw-step.active .hiw-step-desc{max-height:100px;opacity:1;}
+.hiw-progress-track{
+  position:absolute;bottom:0;left:0;right:0;
+  height:2px;background:rgba(0,0,0,0.06);
+}
+.hiw-progress-fill{
+  height:100%;background:linear-gradient(90deg,#FF6B35,#ffaa35);
+  width:0%;border-radius:1px;transition:none;
+}
+.hiw-state{
+  background:rgba(255,255,255,0.04);
+  border:1px solid rgba(255,255,255,0.07);
+  border-radius:12px;padding:20px;
+  backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
+}
 
 /* ═══════════════════════════════════════
    STATS (S7)
@@ -434,19 +440,16 @@ footer{
    RESPONSIVE
 ═══════════════════════════════════════ */
 @media(max-width:900px){
-  .product-inner{grid-template-columns:1fr;gap:48px;}
   .features-grid{grid-template-columns:1fr;}
   .quotes-grid{grid-template-columns:1fr;}
-  .flow-row{flex-wrap:wrap;gap:12px;}
-  .flow-connector{display:none;}
   .stat-item{padding:0 32px;}
-  .cards-stack{height:340px;}
+  .blob-1,.blob-2,.blob-3,.blob-4{opacity:.2;}
 }
 @media(max-width:700px){
   .nav-links{display:none;}
   .navbar{gap:20px;}
   .hero-h1{font-size:44px;}
-  section,.product-section,.flow-section,.features-section,.how-section,.demo-section,.stats-section,.quotes-section,.waitlist-section{padding:80px 24px;}
+  section,.features-section,.stats-section,.quotes-section,.waitlist-section{padding:80px 24px;}
   .stats-inner{flex-direction:column;align-items:center;gap:32px;}
   .stat-item+.stat-item{border-left:none;border-top:1px solid rgba(15,23,42,0.1);padding-top:32px;}
   footer{flex-direction:column;gap:10px;text-align:center;padding:28px 24px;}
@@ -455,17 +458,21 @@ footer{
 </head>
 <body>
 
-<!-- BLOBS -->
-<div class="blob blob-1"></div>
-<div class="blob blob-2"></div>
-<div class="blob blob-3"></div>
+<!-- FLUID GRADIENT BACKGROUND -->
+<div class="gradient-bg" aria-hidden="true">
+  <div class="blob blob-1"></div>
+  <div class="blob blob-2"></div>
+  <div class="blob blob-3"></div>
+  <div class="blob blob-4"></div>
+  <div class="blob blob-5"></div>
+</div>
 
 <!-- ════════════ NAVBAR ════════════ -->
 <nav class="navbar" id="navbar">
   <a href="#" class="nav-logo">tethr<span class="underscore">_</span></a>
   <ul class="nav-links">
-    <li><a href="#product">product</a></li>
     <li><a href="#how">how it works</a></li>
+    <li><a href="#features">built different</a></li>
     <li><a href="#waitlist">for founders</a></li>
   </ul>
   <a href="#waitlist" class="nav-cta">join waitlist</a>
@@ -473,130 +480,93 @@ footer{
 
 <!-- ════════════ HERO ════════════ -->
 <section class="hero" id="top">
-  <div class="hero-label">AI Cofounder</div>
   <h1 class="hero-h1">Your startup idea<br>deserves more than<br>advice.</h1>
-  <p class="hero-sub">Tethr is the AI cofounder that executes alongside you — research, competitors, customers, and execution plans — from raw idea to real users.</p>
+  <p class="hero-sub">meet tethr, your ai cofounder<br>it does the work, while you make the decision</p>
   <div class="hero-ctas">
+    <a href="#how" class="btn-secondary">See how it works</a>
     <a href="#waitlist" class="btn-primary">Start building →</a>
-    <a href="#demo" class="btn-secondary">Watch demo</a>
   </div>
   <p class="hero-note">Free to start — no credit card</p>
-  <div class="scroll-line"></div>
 </section>
 
-<!-- ════════════ PRODUCT SHOWCASE ════════════ -->
-<section class="product-section above" id="product">
-  <div class="product-inner">
-    <!-- Left -->
-    <div class="reveal-left">
-      <div class="section-label">What Tethr Does</div>
-      <h2 class="section-h2">Not advice.<br>Execution.</h2>
-      <p class="product-body">Every other tool tells you what to do. Tethr goes and does it. Finding Reddit threads where your customers are frustrated. Mapping every competitor. Building your Week 1 plan. You make the decisions. Tethr handles everything else.</p>
-      <a href="#how" class="product-link">See how it works <span class="arrow">→</span></a>
+<!-- ════════════ HOW IT WORKS ════════════ -->
+<section id="how" class="above" style="position:relative;padding:100px 20px 120px;background:#f4f6f9;overflow:hidden;">
+  <div class="hiw-inner">
+    <!-- Header -->
+    <div style="margin-bottom:56px;">
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:16px;">
+        <div style="height:1px;width:24px;background:rgba(255,107,53,0.6);"></div>
+        <span style="font-size:11px;font-weight:600;letter-spacing:.18em;color:#FF6B35;text-transform:uppercase;">How it works</span>
+      </div>
+      <h2 style="font-size:clamp(32px,4vw,48px);font-weight:800;color:#0f172a;margin-bottom:12px;">From idea to momentum.</h2>
+      <p style="font-size:15px;color:#52525b;max-width:440px;line-height:1.6;">Write a sentence. Tethr does the research. You get a real first week.</p>
     </div>
-    <!-- Right — layered tilted cards -->
-    <div class="reveal-right">
-      <div class="cards-stack">
-        <!-- Card 1: Competitor breakdown -->
-        <div class="stack-card sc1">
-          <div class="card-chrome">
-            <div class="dot" style="background:#ff5f57"></div>
-            <div class="dot" style="background:#ffbd2e"></div>
-            <div class="dot" style="background:#27c93f"></div>
+    <!-- Two-column grid -->
+    <div class="hiw-grid">
+      <!-- Left: dark mockup -->
+      <div class="hiw-mockup">
+        <div class="hiw-chrome">
+          <div class="hiw-dots">
+            <span style="background:#ff5f56"></span>
+            <span style="background:#ffbd2e"></span>
+            <span style="background:#27c93f"></span>
           </div>
-          <div class="card-title-sm">Competitor breakdown</div>
-          <div class="comp-row"><span class="comp-name">Copilot</span><span class="comp-price">$9/mo</span><div class="comp-badge" style="background:#ef4444"></div></div>
-          <div class="comp-row"><span class="comp-name">Monarch</span><span class="comp-price">$14/mo</span><div class="comp-badge" style="background:#ef4444"></div></div>
-          <div class="comp-row"><span class="comp-name">YNAB</span><span class="comp-price">$15/mo</span><div class="comp-badge" style="background:#f59e0b"></div></div>
-          <div class="comp-row"><span class="comp-name">Cleo</span><span class="comp-price">Free tier</span><div class="comp-badge" style="background:#22c55e"></div></div>
+          <span class="hiw-chrome-title">tethr_ · active session</span>
         </div>
-        <!-- Card 2: Chat -->
-        <div class="stack-card sc2" style="min-height:200px;">
-          <div class="card-chrome">
-            <div class="dot" style="background:#ff5f57"></div>
-            <div class="dot" style="background:#ffbd2e"></div>
-            <div class="dot" style="background:#27c93f"></div>
+        <div class="hiw-mockup-body">
+          <!-- State 1: Input -->
+          <div class="hiw-state" id="hiw-state-1">
+            <div class="hiw-state-label">YOUR IDEA</div>
+            <div class="hiw-input-wrap">
+              <span id="hiw-typewriter"></span><span class="hiw-cursor">|</span>
+            </div>
+            <p class="hiw-hint">One sentence is all you need.</p>
           </div>
-          <div style="overflow:hidden;">
-            <div class="chat-msg-u">financial literacy app for gen z</div>
-            <div class="chat-msg-ai">On it. Searching Reddit now for customer pain threads...</div>
+          <!-- State 2: Research -->
+          <div class="hiw-state" id="hiw-state-2" style="display:none;">
+            <div class="hiw-state-label">TETHR IS WORKING</div>
+            <div>
+              <div class="hiw-work-item done"><span class="hiw-dot orange"></span>Scanned Reddit — found 9 customer pain threads</div>
+              <div class="hiw-work-item done"><span class="hiw-dot orange"></span>Mapped 7 direct competitors</div>
+              <div class="hiw-work-item active"><span class="hiw-dot blue"></span>Building your Week 1 plan...</div>
+              <div class="hiw-work-item"><span class="hiw-dot grey"></span>Generating outreach templates</div>
+            </div>
+          </div>
+          <!-- State 3: Output -->
+          <div class="hiw-state" id="hiw-state-3" style="display:none;">
+            <div class="hiw-state-label">WEEK 1 PLAN — READY</div>
+            <div>
+              <div class="hiw-output-item"><span class="hiw-arrow">→</span>Talk to 5 people who quit a competitor product. Ask why.</div>
+              <div class="hiw-output-item"><span class="hiw-arrow">→</span>Build one landing page with a single question</div>
+              <div class="hiw-output-item"><span class="hiw-arrow">→</span>Post in the right subreddit — question, not pitch</div>
+              <div class="hiw-output-item"><span class="hiw-arrow">→</span>DM 3 people from the Reddit pain threads directly</div>
+            </div>
+            <p class="hiw-session-note">Session saved. Tethr will follow up on Friday.</p>
           </div>
         </div>
-        <!-- Card 3: Week 1 plan -->
-        <div class="stack-card sc3">
-          <div class="card-chrome">
-            <div class="dot" style="background:#ff5f57"></div>
-            <div class="dot" style="background:#ffbd2e"></div>
-            <div class="dot" style="background:#27c93f"></div>
-          </div>
-          <div class="card-title-sm">Week 1 plan</div>
-          <div class="check-row"><div class="check-box done"><svg width="8" height="8" viewBox="0 0 8 8"><path d="M1 4l2 2 4-4" stroke="#fff" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg></div><span>Talk to 5 people who quit a budgeting app</span></div>
-          <div class="check-row"><div class="check-box done"><svg width="8" height="8" viewBox="0 0 8 8"><path d="M1 4l2 2 4-4" stroke="#fff" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg></div><span>Build 1-question landing page</span></div>
-          <div class="check-row"><div class="check-box"></div><span>Post in r/personalfinance</span></div>
-        </div>
+      </div>
+      <!-- Right: step cards -->
+      <div class="hiw-steps-col">
+        <button class="hiw-step active" id="hiw-step-1" onclick="hiwJump(1)">
+          <span class="hiw-badge">1</span>
+          <p class="hiw-step-title">Describe your idea</p>
+          <p class="hiw-step-desc">Type anything. A rough thought, a problem you noticed, a market you've been watching. Tethr starts working immediately.</p>
+          <div class="hiw-progress-track"><div class="hiw-progress-fill" id="hiw-fill-1"></div></div>
+        </button>
+        <button class="hiw-step" id="hiw-step-2" onclick="hiwJump(2)">
+          <span class="hiw-badge">2</span>
+          <p class="hiw-step-title">Tethr does the research</p>
+          <p class="hiw-step-desc">Finds where your customers are already complaining online. Maps every competitor. Identifies the gap nobody else is filling.</p>
+          <div class="hiw-progress-track"><div class="hiw-progress-fill" id="hiw-fill-2"></div></div>
+        </button>
+        <button class="hiw-step" id="hiw-step-3" onclick="hiwJump(3)">
+          <span class="hiw-badge">3</span>
+          <p class="hiw-step-title">Get your real first week</p>
+          <p class="hiw-step-desc">A specific executable plan built around your idea — not a template. Tethr remembers everything so next session picks up exactly where you left off.</p>
+          <div class="hiw-progress-track"><div class="hiw-progress-fill" id="hiw-fill-3"></div></div>
+        </button>
       </div>
     </div>
-  </div>
-</section>
-
-<!-- ════════════ FLOW DIAGRAM ════════════ -->
-<section class="flow-section above">
-  <div class="flow-inner">
-    <div class="section-label reveal-label">The full arc</div>
-    <h2 class="section-h2 reveal" style="margin-top:8px;">Tethr owns the whole arc.</h2>
-    <p class="reveal" style="font-size:17px;color:var(--muted);margin-top:14px;max-width:520px;margin-left:auto;margin-right:auto;line-height:1.75;transition-delay:.08s;">Every other tool owns a slice. Tethr owns the entire journey as one continuous experience.</p>
-    <div class="flow-row" id="flowRow">
-
-      <div class="flow-node" data-fn="0">
-        <div class="flow-node-num">01</div>
-        <div class="flow-node-icon-wrap">
-          <svg viewBox="0 0 18 18"><circle cx="9" cy="7" r="3.5"/><path d="M9 10.5v4M6.5 14h5"/></svg>
-        </div>
-        <div class="flow-node-label">Raw idea</div>
-      </div>
-
-      <div class="flow-connector"><div class="flow-line" data-fi="0"></div></div>
-
-      <div class="flow-node" data-fn="1">
-        <div class="flow-node-num">02</div>
-        <div class="flow-node-icon-wrap">
-          <svg viewBox="0 0 18 18"><circle cx="7.5" cy="7.5" r="4.5"/><path d="M13 13l3 3"/></svg>
-        </div>
-        <div class="flow-node-label">Market research</div>
-      </div>
-
-      <div class="flow-connector"><div class="flow-line" data-fi="1"></div></div>
-
-      <div class="flow-node" data-fn="2">
-        <div class="flow-node-num">03</div>
-        <div class="flow-node-icon-wrap">
-          <svg viewBox="0 0 18 18"><rect x="2" y="2" width="6" height="6" rx="1"/><rect x="10" y="2" width="6" height="6" rx="1"/><rect x="2" y="10" width="6" height="6" rx="1"/><rect x="10" y="10" width="6" height="6" rx="1"/></svg>
-        </div>
-        <div class="flow-node-label">Competitor map</div>
-      </div>
-
-      <div class="flow-connector"><div class="flow-line" data-fi="2"></div></div>
-
-      <div class="flow-node" data-fn="3">
-        <div class="flow-node-num">04</div>
-        <div class="flow-node-icon-wrap">
-          <svg viewBox="0 0 18 18"><path d="M4 5h10M4 9h7M4 13h5"/></svg>
-        </div>
-        <div class="flow-node-label">Week 1 plan</div>
-      </div>
-
-      <div class="flow-connector"><div class="flow-line" data-fi="3"></div></div>
-
-      <div class="flow-node" data-fn="4">
-        <div class="flow-node-num">05</div>
-        <div class="flow-node-icon-wrap">
-          <svg viewBox="0 0 18 18"><circle cx="9" cy="6" r="2.5"/><path d="M3 16c0-3.3 2.7-6 6-6s6 2.7 6 6"/></svg>
-        </div>
-        <div class="flow-node-label">First users</div>
-      </div>
-
-    </div>
-    <p class="flow-note reveal" style="transition-delay:.2s;">From the moment you have an idea to the moment you have real users — without switching tools.</p>
   </div>
 </section>
 
@@ -670,68 +640,6 @@ footer{
           <div class="cap-icon-line"><svg viewBox="0 0 28 28"><path d="M14 4v4M14 20v4M4 14h4M20 14h4"/><circle cx="14" cy="14" r="4"/></svg></div>
           <div class="cap-name">Compounding memory</div>
           <div class="cap-desc">Every conversation is remembered. Tethr builds a model of how you think and what moves you to act.</div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ════════════ HOW IT WORKS ════════════ -->
-<section class="how-section above" id="how">
-  <div class="how-inner">
-    <div>
-      <div class="section-label reveal-label">How it works</div>
-      <h2 class="section-h2 reveal" style="margin-top:8px;">From idea to launch.</h2>
-    </div>
-    <div class="steps-col">
-      <div class="step-row reveal">
-        <div class="step-num">01</div>
-        <div>
-          <div class="step-h">Tell Tethr your idea</div>
-          <p class="step-p">Don't craft a pitch. Just describe what you're thinking. Tethr starts executing immediately.</p>
-        </div>
-      </div>
-      <div class="step-row reveal delay-1">
-        <div class="step-num">02</div>
-        <div>
-          <div class="step-h">Get real work back in minutes</div>
-          <p class="step-p">Competitor breakdown, Reddit pain threads, a Week 1 execution plan — all specific to your idea.</p>
-        </div>
-      </div>
-      <div class="step-row reveal delay-2">
-        <div class="step-num">03</div>
-        <div>
-          <div class="step-h">Build together over time</div>
-          <p class="step-p">Tethr remembers every commitment. It follows up when you go quiet. The relationship compounds.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ════════════ DEMO ════════════ -->
-<section class="demo-section above" id="demo">
-  <div>
-    <div class="section-label reveal-label">See it in action</div>
-    <h2 class="section-h2 reveal" style="margin-top:8px;margin-bottom:48px;transition-delay:.06s;">Watch Tethr work.</h2>
-  </div>
-  <div class="demo-card reveal" id="demoCard">
-    <div class="demo-chrome">
-      <div class="demo-dot" style="background:#ff5f57"></div>
-      <div class="demo-dot" style="background:#ffbd2e"></div>
-      <div class="demo-dot" style="background:#27c93f"></div>
-      <div class="demo-title">tethr_ · active session</div>
-      <div style="width:44px"></div>
-    </div>
-    <div class="demo-body">
-      <div class="demo-timestamp">Today · just now</div>
-      <div class="dmsg-u">I want to build a financial literacy app for gen z</div>
-      <div class="dmsg-ai" id="demoAi">
-        <div class="typing-indicator" id="typingInd">
-          <div class="typing-dot"></div>
-          <div class="typing-dot"></div>
-          <div class="typing-dot"></div>
-          <span class="typing-label">Tethr is researching your idea...</span>
         </div>
       </div>
     </div>
@@ -814,10 +722,36 @@ footer{
 </footer>
 
 <script>
+/* ─── RANDOM BLOB DRIFT ─── */
+(function(){
+  const blobs = document.querySelectorAll('.gradient-bg .blob');
+  const W = () => window.innerWidth;
+  const H = () => window.innerHeight;
+
+  function rand(min, max){ return Math.random() * (max - min) + min; }
+
+  function moveBlob(blob) {
+    const x = rand(-W() * 0.25, W() * 0.25);
+    const y = rand(-H() * 0.25, H() * 0.25);
+    const s = rand(0.88, 1.12);
+    const duration = rand(12, 34); // seconds for this leg
+    blob.style.transition = `transform ${duration}s cubic-bezier(0.45, 0.05, 0.55, 0.95)`;
+    blob.style.transform = `translate(${x}px, ${y}px) scale(${s})`;
+    // schedule next move at a random time before this one ends
+    const next = rand(duration * 0.5, duration * 0.9) * 1000;
+    setTimeout(() => moveBlob(blob), next);
+  }
+
+  // stagger start so blobs don't all move together
+  blobs.forEach((blob, i) => {
+    setTimeout(() => moveBlob(blob), i * rand(400, 1200));
+  });
+})();
+
 /* ─── NAV scroll ─── */
 const navbar = document.getElementById('navbar');
 window.addEventListener('scroll', () => {
-  navbar.classList.toggle('scrolled', window.scrollY > 80);
+  navbar.classList.toggle('scrolled', window.scrollY > 60);
 }, { passive: true });
 
 /* ─── CINEMATIC GAP REVEAL ─── */
@@ -836,7 +770,6 @@ window.addEventListener('scroll', () => {
     const prog = Math.max(0, Math.min(1, raw));
 
     if (prog <= 0.38) {
-      // Phase 1: Quote fades + scales in
       const t = ease(prog / 0.38);
       quote.style.opacity = t;
       quote.style.transform = `scale(${0.88 + 0.12 * t})`;
@@ -844,7 +777,6 @@ window.addEventListener('scroll', () => {
       logoWrap.style.transform = 'scale(1.5)';
       subLine.style.opacity = 0;
     } else if (prog <= 0.65) {
-      // Phase 2: Quote zooms out (scales down + fades), logo zooms in
       const t = ease((prog - 0.38) / 0.27);
       quote.style.opacity = Math.max(0, 1 - t * 1.6);
       quote.style.transform = `scale(${1 - t * 0.18})`;
@@ -853,7 +785,6 @@ window.addEventListener('scroll', () => {
       logoWrap.style.transform = `scale(${1.5 - 0.5 * ease(Math.min(1, lt))})`;
       subLine.style.opacity = 0;
     } else {
-      // Phase 3: Logo settled, sub fades in
       quote.style.opacity = 0;
       logoWrap.style.opacity = 1;
       logoWrap.style.transform = 'scale(1)';
@@ -876,28 +807,6 @@ window.addEventListener('scroll', () => {
   document.querySelectorAll('.reveal,.reveal-left,.reveal-right,.reveal-label').forEach(el => io.observe(el));
 })();
 
-/* ─── FLOW DIAGRAM ─── */
-(function(){
-  const flowRow = document.getElementById('flowRow');
-  if (!flowRow) return;
-  let done = false;
-  const io = new IntersectionObserver(([e]) => {
-    if (e.isIntersecting && !done) {
-      done = true;
-      const nodes = flowRow.querySelectorAll('.flow-node');
-      const lines = flowRow.querySelectorAll('.flow-line');
-      nodes.forEach((node, i) => {
-        setTimeout(() => node.classList.add('fn-on'), i * 120);
-      });
-      lines.forEach((line, i) => {
-        setTimeout(() => line.classList.add('on'), i * 120 + 80);
-      });
-      io.disconnect();
-    }
-  }, { threshold: 0.25 });
-  io.observe(flowRow);
-})();
-
 /* ─── CAPABILITIES GRID ─── */
 (function(){
   const grid = document.getElementById('capGrid');
@@ -913,36 +822,6 @@ window.addEventListener('scroll', () => {
     }
   }, { threshold: 0.1 });
   io.observe(grid);
-})();
-
-/* ─── DEMO typewriter with thinking indicator ─── */
-(function(){
-  const card = document.getElementById('demoCard');
-  const aiBox = document.getElementById('demoAi');
-  const typingInd = document.getElementById('typingInd');
-  const demoText = `On it. Researching now...\n\nCompetitors mapped: Copilot ($9/mo), Monarch ($14/mo), YNAB ($15/mo), Cleo (free). Core weakness across all: they track money but never teach it.\n\nFound 3 Reddit threads in r/personalfinance and r/GenZ where your exact user says "I just want to understand money, not stare at graphs."\n\nWeek 1 plan:\n→ Talk to 5 people aged 18–24 who've quit a budgeting app. Ask why.\n→ Build one landing page: "What if your money app actually explained things?"\n→ Post a genuine question in r/personalfinance — not a pitch.\n\nWhat feels hardest right now?`;
-  let hasTyped = false;
-
-  const io = new IntersectionObserver(([e]) => {
-    if (e.isIntersecting && !hasTyped) {
-      hasTyped = true;
-      io.disconnect();
-      // After 900ms, replace thinking dots with typewriter
-      setTimeout(() => {
-        // Remove typing indicator, add typewriter span
-        aiBox.innerHTML = '<span id="twText"></span><span class="tw-cursor"></span>';
-        const twEl = document.getElementById('twText');
-        let i = 0;
-        (function type() {
-          if (i < demoText.length) {
-            twEl.textContent = demoText.slice(0, ++i);
-            setTimeout(type, 16);
-          }
-        })();
-      }, 900);
-    }
-  }, { threshold: 0.3 });
-  io.observe(card);
 })();
 
 /* ─── STATS count-up ─── */
@@ -966,6 +845,62 @@ window.addEventListener('scroll', () => {
     }
   }, { threshold: 0.3 });
   io.observe(document.getElementById('statsSec'));
+})();
+
+/* ─── HOW IT WORKS — step animator ─── */
+(function(){
+  const HIW_DURATION = 4000;
+  const HIW_TEXT = 'I want to build a B2B invoicing tool for freelancers';
+  let hiwInterval = null;
+
+  window.hiwActivate = function(step) {
+    // update step cards
+    for (let i = 1; i <= 3; i++) {
+      document.getElementById('hiw-step-' + i).classList.toggle('active', i === step);
+      const fill = document.getElementById('hiw-fill-' + i);
+      fill.style.transition = 'none';
+      fill.style.width = '0%';
+    }
+    // update mockup states
+    for (let i = 1; i <= 3; i++) {
+      document.getElementById('hiw-state-' + i).style.display = i === step ? 'block' : 'none';
+    }
+    // typewriter on step 1
+    if (step === 1) {
+      const el = document.getElementById('hiw-typewriter');
+      el.textContent = '';
+      let idx = 0;
+      const t = setInterval(() => {
+        el.textContent = HIW_TEXT.slice(0, ++idx);
+        if (idx >= HIW_TEXT.length) clearInterval(t);
+      }, 40);
+    }
+    // progress fill
+    clearInterval(hiwInterval);
+    const fill = document.getElementById('hiw-fill-' + step);
+    fill.style.transition = 'none';
+    fill.style.width = '0%';
+    let progress = 0;
+    hiwInterval = setInterval(() => {
+      progress += 100 / (HIW_DURATION / 80);
+      fill.style.width = Math.min(progress, 100) + '%';
+      if (progress >= 100) {
+        clearInterval(hiwInterval);
+        setTimeout(() => hiwActivate(step === 3 ? 1 : step + 1), 200);
+      }
+    }, 80);
+  };
+
+  window.hiwJump = function(step) {
+    clearInterval(hiwInterval);
+    hiwActivate(step);
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', () => hiwActivate(1));
+  } else {
+    hiwActivate(1);
+  }
 })();
 
 /* ─── WAITLIST form ─── */
