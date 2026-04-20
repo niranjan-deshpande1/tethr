@@ -16,6 +16,7 @@ Serper.dev + Reddit API · Vercel · PostHog · Sentry
 - NEVER use purple. Accent is #909090, max 3 uses per view, never decorative.
 - type over interface. No enum. No any without approval.
 - After every mistake: add a rule here. End response with "Updated CLAUDE.md."
+- After completing any task, append a one-line summary to a ## Session Log section at the bottom of this file.
 - Run typecheck + lint before every commit.
 - Start each and every task in plan mode (Shift+Tab).
 - One feature at a time. Always.
