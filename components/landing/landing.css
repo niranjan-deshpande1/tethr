@@ -749,6 +749,36 @@ html{scroll-behavior:smooth;}
   40% { opacity: 1; transform: scale(1); }
 }
 
+/* ── Timeline (Tab 1 right pane) ── */
+.tl { display: flex; flex-direction: column; width: 100%; }
+.tl-node { display: flex; gap: 16px; }
+.tl-node.last .tl-left { padding-bottom: 0; }
+.tl-left { display: flex; flex-direction: column; align-items: center; padding-bottom: 4px; }
+.tl-dot { width: 12px; height: 12px; border-radius: 50%; flex-shrink: 0; margin-top: 3px; }
+.tl-dot.filled { background: #F5622D; }
+.tl-dot.half { background: linear-gradient(to bottom, #F5622D 50%, rgba(26,24,21,0.15) 50%); }
+.tl-dot.empty { background: transparent; border: 1.5px solid rgba(26,24,21,0.2); }
+.tl-line { width: 1.5px; background: rgba(26,24,21,0.1); flex: 1; margin: 4px 0; min-height: 28px; }
+.tl-right { padding-bottom: 24px; flex: 1; }
+.tl-node.last .tl-right { padding-bottom: 0; }
+.tl-day { font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #F5622D; margin-bottom: 4px; }
+.tl-day.faded { color: rgba(26,24,21,0.28); }
+.tl-text { font-size: 12.5px; color: rgba(26,24,21,0.65); line-height: 1.5; }
+.tl-text.faded { color: rgba(26,24,21,0.35); }
+.tl-footer { font-size: 11.5px; font-weight: 600; color: #F5622D; margin-top: 20px; letter-spacing: 0.01em; }
+
+/* ── Outcome cards (Tab 3 right pane) ── */
+.oc-list { display: flex; flex-direction: column; gap: 10px; width: 100%; }
+.oc-card {
+  padding: 14px 16px;
+  border-left: 2.5px solid #F5622D;
+  background: rgba(26,24,21,0.04);
+  border-radius: 0 8px 8px 0;
+}
+.oc-week { font-size: 9.5px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #F5622D; margin-bottom: 5px; }
+.oc-text { font-size: 12px; color: rgba(26,24,21,0.65); line-height: 1.55; }
+.oc-footer { font-size: 11px; color: rgba(26,24,21,0.38); line-height: 1.6; margin-top: 16px; text-align: center; }
+
 /* ============================================================
    WAITLIST SECTION
    ============================================================ */

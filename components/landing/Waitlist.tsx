@@ -41,6 +41,7 @@ export default function Waitlist() {
       setError('please enter a valid email')
       return
     }
+    if (!supabase) { setDone(true); return }
     const { error: sbError } = await supabase
       .from('waitlist')
       .insert([{ email }])
