@@ -1,9 +1,7 @@
 'use client'
 
-import { useCallback, useEffect, useRef, useState } from 'react'
+import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-
-const HIW_DURATION = 5000
 
 type Feature = {
   label: string
@@ -148,7 +146,7 @@ const FEATURES: Feature[] = [
     label: 'Stay with you',
     short: 'Build from your phone.',
     description:
-      'Text tethr what you need and get real executed work back in seconds, from anywhere. Research run, landing page, YC app, pitch deck, outreach. All of it over iMessage or WhatsApp. From your bed, from class, or from wherever. Your entire company travels with you.',
+      'Text tethr what you need and get real executed work back in seconds, from anywhere. Describe your idea and get a full research run. Ask for a landing page and it gets built. Need your YC application drafted, your pitch deck revised, your competitor landscape updated, your outreach sent, your investor pipeline tracked? All of it, over iMessage or WhatsApp, from your bed, from class, from wherever you are. Your entire company travels with you.',
     mockup: (
       <div style={{ fontFamily: 'Inter, sans-serif' }}>
         <div style={{ color: '#6b7280', fontSize: '11px', letterSpacing: '0.08em', textTransform: 'uppercase', marginBottom: '16px' }}>iMessage · tethr_</div>
@@ -178,130 +176,24 @@ const FEATURES: Feature[] = [
   },
 ]
 
-export default function HowItWorks() {
-  const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null)
-  const stepsColRef = useRef<HTMLDivElement>(null)
-  const stepRefs = useRef<(HTMLDivElement | null)[]>([])
+export default function FeatureSwitcher() {
   const [active, setActive] = useState(0)
 
-  useEffect(() => {
-    const step = stepRefs.current[active]
-    const col = stepsColRef.current
-    if (!step || !col) return
-    const stepTop = step.offsetTop - col.offsetTop
-    col.scrollTo({ top: stepTop - 16, behavior: 'smooth' })
-  }, [active])
-
-  const startInterval = useCallback(() => {
-    if (intervalRef.current) clearInterval(intervalRef.current)
-    intervalRef.current = setInterval(() => {
-      setActive((prev) => (prev + 1) % FEATURES.length)
-    }, HIW_DURATION)
-  }, [])
-
-  useEffect(() => {
-    startInterval()
-    return () => {
-      if (intervalRef.current) clearInterval(intervalRef.current)
-    }
-  }, [startInterval])
-
-  const handleFeatureClick = (i: number) => {
-    setActive(i)
-    startInterval()
-  }
-
   return (
-    <section id="how" className="above hiw-section" style={{
-      position: 'relative',
-      padding: '20px 8px',
-    }}>
-      <div className="hiw-inner" style={{
-        background: '#ffffff',
-        borderRadius: '20px',
-        padding: '60px 48px',
-        width: '100%',
-        boxSizing: 'border-box',
-      }}>
-        <div style={{ marginBottom: '56px' }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '16px' }}>
-            <div style={{ height: '1px', width: '24px', background: 'rgba(255,107,53,0.6)' }} />
-            <span style={{ fontSize: '11px', fontWeight: 600, letterSpacing: '.18em', color: '#FF6B35', textTransform: 'uppercase' }}>What tethr does</span>
-          </div>
-          <h2 style={{ fontSize: 'clamp(32px,4vw,48px)', fontWeight: 800, color: '#0f172a', marginBottom: 0 }}>Everything it takes to build.</h2>
+    <section id="features" style={{ background: '#ffffff', padding: '100px 24px' }}>
+      <div style={{ maxWidth: '1100px', margin: '0 auto' }}>
+        <div style={{ textAlign: 'center', marginBottom: '64px' }}>
+          <div style={{ fontSize: '12px', fontWeight: 600, letterSpacing: '0.1em', textTransform: 'uppercase', color: '#FF6B35', marginBottom: '12px' }}>What tethr does</div>
+          <h2 style={{ fontSize: 'clamp(2rem, 4vw, 3rem)', fontWeight: 700, color: '#0f172a', lineHeight: 1.15, margin: 0 }}>Everything it takes to build.</h2>
         </div>
 
-        <div className="hiw-grid" style={{ display: 'flex', flexDirection: 'row', gap: '48px', alignItems: 'stretch' }}>
-          {/* LEFT: terminal mockup synced to active feature */}
-          <div className="hiw-mockup" style={{ flex: '1', minWidth: 0, position: 'relative', height: '480px' }}>
-            <div className="hiw-chrome">
-              <div className="hiw-dots">
-                <span style={{ background: '#ff5f56' }} />
-                <span style={{ background: '#ffbd2e' }} />
-                <span style={{ background: '#27c93f' }} />
-              </div>
-              <span className="hiw-chrome-title">tethr_ · active session</span>
-            </div>
-            <div className="hiw-mockup-body" style={{ height: '360px', overflowY: 'auto', overflowX: 'hidden' }}>
-              <AnimatePresence mode="wait">
-                <motion.div
-                  key={active}
-                  initial={{ opacity: 0, y: 8 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -8 }}
-                  transition={{ duration: 0.3, ease: [0.23, 1, 0.32, 1] }}
-                >
-                  {FEATURES[active].mockup}
-                </motion.div>
-              </AnimatePresence>
-            </div>
-
-            {/* Progress pill */}
-            <div style={{
-              position: 'absolute',
-              bottom: '16px',
-              left: '50%',
-              transform: 'translateX(-50%)',
-              background: 'rgba(20,20,25,0.85)',
-              backdropFilter: 'blur(12px)',
-              borderRadius: '100px',
-              padding: '8px 14px',
-              display: 'flex',
-              alignItems: 'center',
-              gap: '10px',
-              border: '1px solid rgba(255,255,255,0.1)',
-            }}>
-              <span style={{ color: '#ffffff', fontSize: '13px', fontWeight: 500, whiteSpace: 'nowrap' }}>
-                {FEATURES[active].label}
-              </span>
-              <div style={{ width: '120px', height: '3px', borderRadius: '100px', background: 'rgba(255,255,255,0.15)', overflow: 'hidden' }}>
-                <motion.div
-                  key={active}
-                  initial={{ width: '0%' }}
-                  animate={{ width: '100%' }}
-                  transition={{ duration: HIW_DURATION / 1000, ease: 'linear' }}
-                  style={{ height: '100%', background: '#FF6B35', borderRadius: '100px' }}
-                />
-              </div>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
-                {FEATURES.map((_, i) => (
-                  <div key={i} style={{
-                    width: '6px',
-                    height: '6px',
-                    borderRadius: '50%',
-                    background: i === active ? '#ffffff' : 'rgba(255,255,255,0.25)',
-                  }} />
-                ))}
-              </div>
-            </div>
-          </div>
-
-          {/* RIGHT: feature list only */}
-          <div ref={stepsColRef} className="hiw-steps-col" style={{ width: '380px', flexShrink: 0, maxHeight: '480px', overflowY: 'scroll', scrollbarWidth: 'none', msOverflowStyle: 'none' } as React.CSSProperties}>
+        <div style={{ display: 'flex', gap: '48px', alignItems: 'flex-start' }}>
+          {/* Left column */}
+          <div style={{ maxWidth: '420px', width: '100%', flexShrink: 0 }}>
             {FEATURES.map((feature, i) => (
-              <div key={feature.label} ref={(el) => { stepRefs.current[i] = el }}>
+              <div key={feature.label}>
                 <button
-                  onClick={() => handleFeatureClick(i)}
+                  onClick={() => setActive(i)}
                   style={{
                     width: '100%',
                     background: 'none',
@@ -344,6 +236,32 @@ export default function HowItWorks() {
                 </button>
               </div>
             ))}
+          </div>
+
+          {/* Right column — dark glass card */}
+          <div style={{ flex: 1, position: 'sticky', top: '100px' }}>
+            <div style={{
+              background: 'rgba(14,18,40,0.88)',
+              backdropFilter: 'blur(28px)',
+              WebkitBackdropFilter: 'blur(28px)',
+              border: '1px solid rgba(255,255,255,0.08)',
+              borderRadius: '20px',
+              minHeight: '420px',
+              padding: '32px',
+              overflow: 'hidden',
+            }}>
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={active}
+                  initial={{ opacity: 0, y: 8 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -8 }}
+                  transition={{ duration: 0.3, ease: [0.23, 1, 0.32, 1] }}
+                >
+                  {FEATURES[active].mockup}
+                </motion.div>
+              </AnimatePresence>
+            </div>
           </div>
         </div>
       </div>
