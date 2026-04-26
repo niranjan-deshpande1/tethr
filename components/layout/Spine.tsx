@@ -1,5 +1,6 @@
 "use client";
 
+import React from "react";
 import {
   House,
   Search,
@@ -20,11 +21,11 @@ type NavNode = {
 };
 
 const journeyNodes: NavNode[] = [
-  { href: "/app/research", icon: <Search size={18} />, label: "Research", isJourney: true },
-  { href: "/app/plan", icon: <Calendar size={18} />, label: "Plan", isJourney: true },
-  { href: "/app/validation", icon: <FlaskConical size={18} />, label: "Validation", isJourney: true },
-  { href: "/app/outreach", icon: <MessageSquare size={18} />, label: "Outreach", isJourney: true },
-  { href: "/app/journey", icon: <Map size={18} />, label: "Journey", isJourney: true },
+  { href: "/app/research", icon: <Search size={20} />, label: "Research", isJourney: true },
+  { href: "/app/plan", icon: <Calendar size={20} />, label: "Plan", isJourney: true },
+  { href: "/app/validation", icon: <FlaskConical size={20} />, label: "Validation", isJourney: true },
+  { href: "/app/outreach", icon: <MessageSquare size={20} />, label: "Outreach", isJourney: true },
+  { href: "/app/journey", icon: <Map size={20} />, label: "Journey", isJourney: true },
 ];
 
 function SpineNode({ href, icon, label }: NavNode) {
@@ -43,18 +44,18 @@ function SpineNode({ href, icon, label }: NavNode) {
         width: "100%",
         height: "40px",
         borderRadius: "6px",
-        color: isActive ? "var(--accent)" : "var(--text-faint)",
+        color: isActive ? "var(--accent)" : "var(--text-muted)",
         transition: "background 150ms ease, color 150ms ease",
         textDecoration: "none",
         position: "relative",
       }}
-      onMouseEnter={(e) => {
+      onMouseEnter={(e: React.MouseEvent<HTMLAnchorElement>) => {
         e.currentTarget.style.background = "var(--bg-card)";
         e.currentTarget.style.color = isActive ? "var(--accent)" : "var(--text)";
       }}
-      onMouseLeave={(e) => {
+      onMouseLeave={(e: React.MouseEvent<HTMLAnchorElement>) => {
         e.currentTarget.style.background = "transparent";
-        e.currentTarget.style.color = isActive ? "var(--accent)" : "var(--text-faint)";
+        e.currentTarget.style.color = isActive ? "var(--accent)" : "var(--text-muted)";
       }}
     >
       {icon}
@@ -98,9 +99,8 @@ export default function Spine() {
         href="/app"
         style={{
           fontFamily: "var(--font-inter), Inter, sans-serif",
-          fontWeight: 600,
-          fontSize: "13px",
-          color: "var(--text)",
+          fontWeight: 700,
+          fontSize: "15px",
           textDecoration: "none",
           letterSpacing: "-0.02em",
           height: "40px",
@@ -110,7 +110,8 @@ export default function Spine() {
           width: "100%",
         }}
       >
-        t_
+        <span style={{ color: "#ffffff" }}>t</span>
+        <span style={{ color: "var(--accent)" }}>_</span>
       </Link>
 
       <Divider />
