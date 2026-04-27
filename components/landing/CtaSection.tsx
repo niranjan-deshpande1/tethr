@@ -71,9 +71,9 @@ export default function CtaSection() {
         <div className="cta-card">
           <div className="cta-tabs">
             {[
-              { id: '1', label: 'The first 72 hours' },
-              { id: '2', label: 'What Tethr actually does' },
-              { id: '3', label: 'Where you end up' },
+              { id: '1', label: 'The first week' },
+              { id: '2', label: 'What actually happens' },
+              { id: '3', label: 'What comes next' },
             ].map(t => (
               <div
                 key={t.id}
@@ -92,48 +92,46 @@ export default function CtaSection() {
 
               {/* Tab 1 left */}
               <div className={`pc${activeTab === '1' ? ' on' : ''}`}>
-                <div className="pc-tag">The pattern</div>
-                <h3 className="pc-hed">Most ideas die in the gap between excitement and execution.</h3>
-                <p className="pc-body">You have the idea on a Monday. You're genuinely excited. By Thursday you've opened 14 tabs, watched three YouTube videos about market sizing, and haven't talked to a single person who might actually want it.<br /><br />That's not a you problem. That's what happens when you're navigating without a map.</p>
+                <div className="pc-tag">THE REAL PROBLEM</div>
+                <h3 className="pc-hed">Most founders quit before they talk to a single customer.</h3>
+                <p className="pc-body">This isn't because they gave up, it's because they hit the first week and had no clue what to actually do. So they researched, made lists, and watched videos. But one day they just lost the motivation to keep putting in the work.<br /><br />That is not a discipline problem. It is a direction problem.</p>
                 <ul className="pc-list">
-                  <li><div className="cta-dot"></div>72 hours — average time before momentum stalls</li>
-                  <li><div className="cta-dot"></div>0 customers talked to — for most founders in week one</li>
-                  <li><div className="cta-dot"></div>Not because the idea was bad. Because nobody told them what to do next.</li>
+                  <li><div className="cta-dot"></div>Most founders never talk to a customer in their first month</li>
+                  <li><div className="cta-dot"></div>The idea is not usually what fails. The next step is.</li>
+                  <li><div className="cta-dot"></div>Having a thinking partner triples your odds of reaching first users</li>
                 </ul>
               </div>
 
               {/* Tab 2 left */}
               <div className={`pc${activeTab === '2' ? ' on' : ''}`}>
-                <div className="pc-tag">What happens when you start</div>
-                <h3 className="pc-hed">You describe the idea. Tethr goes to work.</h3>
-                <p className="pc-body">Not a chatbot. Not a generator. An agent that actually does the research, maps the competitive landscape, finds where your future customers are already talking, and returns with a real Week 1 plan — specific to your idea. Then remembers it all the next time you open a session.</p>
+                <div className="pc-tag">WHEN YOU START</div>
+                <h3 className="pc-hed">You tell tethr your idea. It goes and does the work.</h3>
+                <p className="pc-body">An agent that actually goes, finds reddit threads where your future customers are already complaining. It maps every real competitor and where they fall short, and builds your weekly plans around your specific idea. It's your cofounder, that remembers every detail no matter how many sessions you open.</p>
                 <ul className="pc-list">
-                  <li><div className="cta-dot"></div>Reddit threads where your future customers are frustrated — found</li>
-                  <li><div className="cta-dot"></div>Every real competitor, what they charge, where they fail — mapped</li>
-                  <li><div className="cta-dot"></div>Your first week, task by task, draft by draft — built</li>
-                  <li><div className="cta-dot"></div>And next week. And the week after.</li>
+                  <li><div className="cta-dot"></div>Reddit threads with real customer frustration, found and summarized</li>
+                  <li><div className="cta-dot"></div>Competitors mapped with pricing, weaknesses, and gaps called out</li>
+                  <li><div className="cta-dot"></div>A Week 1 plan that is specific to your idea, not generic advice</li>
+                  <li><div className="cta-dot"></div>Every session builds on the last one</li>
                 </ul>
               </div>
 
-              {/* Tab 3 left */}
-              <div className={`pc${activeTab === '3' ? ' on' : ''}`}>
-                <div className="pc-tag">The other side</div>
-                <h3 className="pc-hed">Founders who ship have one thing in common.</h3>
-                <p className="pc-body">They didn't figure it out alone. Every founder who got funded, got users, or just actually launched — had someone in their corner who already knew the context. Who remembered what they said last week. Who pushed back when they were spiraling.<br /><br />That's what Tethr is.</p>
-                <ul className="pc-list">
-                  <li><div className="cta-dot"></div>Remembers every session — picks up where you left off</li>
-                  <li><div className="cta-dot"></div>Alerts you when competitors move or your plan needs updating</li>
-                  <li><div className="cta-dot"></div>Follows up when you go quiet — because that's what a real cofounder does</li>
-                </ul>
-                <div className="pc-cta">
-                  <a href="#waitlist" className="btn-dark">
-                    Start building
-                    <svg viewBox="0 0 13 13">
-                      <path d="M2 6.5h9M8 3l3.5 3.5L8 10" />
-                    </svg>
-                  </a>
-                  <span className="pc-fine">Free to start. No credit card.</span>
+              {/* Tab 3 left — outcome cards (swapped) */}
+              <div className={`pc${activeTab === '3' ? ' on' : ''}`} style={{ justifyContent: 'center' }}>
+                <div className="oc-list">
+                  <div className="oc-card">
+                    <div className="oc-week">Week 1</div>
+                    <div className="oc-text">you have talked to real people who want what you are building. you know exactly what they hate about what exists.</div>
+                  </div>
+                  <div className="oc-card">
+                    <div className="oc-week">Week 4</div>
+                    <div className="oc-text">you have a landing page and a waitlist. tethr wrote the outreach. you did not stall on the blank doc.</div>
+                  </div>
+                  <div className="oc-card">
+                    <div className="oc-week">Month 3</div>
+                    <div className="oc-text">you are iterating on real feedback. you applied to YC. tethr drafted every answer from your actual research.</div>
+                  </div>
                 </div>
+                <div className="oc-footer">This is what it looks like when you are not navigating alone.</div>
               </div>
             </div>
 
@@ -149,8 +147,8 @@ export default function CtaSection() {
                       <div className="tl-line"></div>
                     </div>
                     <div className="tl-right">
-                      <div className="tl-day">Monday</div>
-                      <div className="tl-text">The idea hits. You're convinced it's real.</div>
+                      <div className="tl-day">Day 1</div>
+                      <div className="tl-text">The idea hits. You know it is real. You open a doc and start writing.</div>
                     </div>
                   </div>
                   <div className="tl-node">
@@ -159,8 +157,8 @@ export default function CtaSection() {
                       <div className="tl-line"></div>
                     </div>
                     <div className="tl-right">
-                      <div className="tl-day">Wednesday</div>
-                      <div className="tl-text">You start researching. The tabs multiply.</div>
+                      <div className="tl-day">Day 3</div>
+                      <div className="tl-text">You have 11 tabs open. You have not talked to anyone. The doc has four bullet points.</div>
                     </div>
                   </div>
                   <div className="tl-node last">
@@ -168,58 +166,61 @@ export default function CtaSection() {
                       <div className="tl-dot empty"></div>
                     </div>
                     <div className="tl-right">
-                      <div className="tl-day faded">Friday</div>
-                      <div className="tl-text faded">You haven't built anything. Momentum is gone.</div>
+                      <div className="tl-day faded">Day 7</div>
+                      <div className="tl-text faded">You tell yourself you will start fresh next week.</div>
                     </div>
                   </div>
                 </div>
-                <div className="tl-footer">Tethr exists for this exact gap.</div>
+                <div className="tl-footer">tethr exists for this exact window.</div>
               </div>
 
               {/* Tab 2 right — chat mockup */}
               <div className={`rp rp3${activeTab === '2' ? ' on' : ''}`}>
                 <div className="ch-bar">
                   <div className="ch-dots">
-                    <div className="ch-dot" style={{ background: '#ff5f57' }}></div>
-                    <div className="ch-dot" style={{ background: '#febc2e' }}></div>
-                    <div className="ch-dot" style={{ background: '#28c840' }}></div>
+                    <div className="ch-dot" style={{ background: '#ff5f56' }}></div>
+                    <div className="ch-dot" style={{ background: '#ffbd2e' }}></div>
+                    <div className="ch-dot" style={{ background: '#27c93f' }}></div>
                   </div>
-                  <div className="ch-lbl">tethr_ · active session</div>
+                  <div className="ch-lbl">tethr_ / active session</div>
                   <div style={{ width: 40 }}></div>
                 </div>
                 <div className="msgs">
-                  <div className="m u">I want to build a habit tracker but actually make it work for ADHD</div>
-                  <div className="m t">On it. Back in a minute.</div>
-                  <div className="m t" style={{ whiteSpace: 'pre-line', fontSize: 11, lineHeight: 1.65 }}>{`Found 23 Reddit threads in r/ADHD and r/productivity where your exact user says existing apps feel punishing, not helpful.
+                  <div className="m u">i want to build a B2B invoicing tool for freelancers</div>
+                  <div className="m t">on it. back in a minute.</div>
+                  <div className="m t" style={{ whiteSpace: 'pre-line', fontSize: 11, lineHeight: 1.65 }}>{`found 18 reddit threads in r/freelance and r/smallbusiness. your exact customer keeps saying the same thing: they get paid late because invoicing feels too formal and clients ignore it.
 
-Top gap: Habitica, Streaks, and Done all use streak mechanics that destroy motivation on bad days.
+competitors: stripe invoicing, freshbooks, wave. all of them treat invoicing like accounting. none of them treat it like communication.
 
-Your angle: progress that resets without shame.
+your gap: invoicing that feels like a conversation, not a bill.
 
-Week 1:
-→ Talk to 5 people who quit Habitica. Ask what broke first.
-→ One landing page. One line.
-→ Post in r/ADHD — not a pitch, a question.`}</div>
+week 1:
+→ talk to 5 freelancers who have a late payment right now. ask what they sent.
+→ one landing page. one line: invoices clients actually open.
+→ post in r/freelance, ask how they follow up on late payments. do not mention the product.`}</div>
                 </div>
               </div>
 
-              {/* Tab 3 right — outcome cards */}
-              <div className={`rp rp2${activeTab === '3' ? ' on' : ''}`} style={{ padding: '28px 32px', justifyContent: 'center', gap: 0 }}>
-                <div className="oc-list">
-                  <div className="oc-card">
-                    <div className="oc-week">Week 1</div>
-                    <div className="oc-text">You've talked to real potential customers. You know exactly what they hate about what exists.</div>
-                  </div>
-                  <div className="oc-card">
-                    <div className="oc-week">Week 4</div>
-                    <div className="oc-text">You have a landing page, a waitlist, and your first 50 signups. Tethr built the outreach templates.</div>
-                  </div>
-                  <div className="oc-card">
-                    <div className="oc-week">Month 3</div>
-                    <div className="oc-text">You're iterating on feedback from real users. You applied to YC. Tethr drafted the application.</div>
-                  </div>
+              {/* Tab 3 right — copy (swapped) */}
+              <div className={`rp rp2${activeTab === '3' ? ' on' : ''}`} style={{ padding: '36px 40px', justifyContent: 'center', gap: 0, display: activeTab === '3' ? 'flex' : 'none', flexDirection: 'column' }}>
+                <div className="pc-tag" style={{ marginBottom: 16 }}>THE DIFFERENCE</div>
+                <h3 className="pc-hed" style={{ fontSize: 22, marginBottom: 16 }}>Every founder who shipped had someone who already knew the context.</h3>
+                <p className="pc-body" style={{ fontSize: 14 }}>not a random dude on instagram they dm&apos;ed a month ago. Someone actually in it with them, remembering what they say, and actually keeping them accountable and asking why they haven&apos;t done the things they&apos;d say they would do.</p>
+                <ul className="pc-list" style={{ marginTop: 20 }}>
+                  <li><div className="cta-dot"></div>Picks up exactly where you left off every session</li>
+                  <li><div className="cta-dot"></div>Sends you alerts when a competitor makes a move or Reddit shifts on your market</li>
+                  <li><div className="cta-dot"></div>Follows up when you go quiet, because going quiet is how ideas die</li>
+                  <li><div className="cta-dot"></div>Drafts the things that feel hard to start: cold emails, YC apps, landing page copy</li>
+                </ul>
+                <div className="pc-cta" style={{ marginTop: 28 }}>
+                  <a href="#waitlist" className="btn-dark">
+                    Start building
+                    <svg viewBox="0 0 13 13">
+                      <path d="M2 6.5h9M8 3l3.5 3.5L8 10" />
+                    </svg>
+                  </a>
+                  <span className="pc-fine">Free to start. No credit card.</span>
                 </div>
-                <div className="oc-footer">This is what momentum looks like when you're not figuring it out alone.</div>
               </div>
 
             </div>
