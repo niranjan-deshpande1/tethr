@@ -14,21 +14,21 @@ type Feature = {
 
 const FEATURES: Feature[] = [
   {
-    label: 'Validate',
-    short: 'Is this worth building?',
+    label: 'validate',
+    short: 'is this worth building?',
     description:
-      "Tethr searches Reddit, scans competitor positioning, and comes back with a real verdict on whether there's an opening in your market. If there is, you'll know exactly why. If there isn't, you'll know exactly where to look. Every call is backed by patterns from thousands of companies that went through YC, a16z, and the programs that built the defining startups of the last decade.",
+      "tethr searches Reddit, scans competitor positioning, and comes back with a real verdict on whether there's an opening in your market. if there is, you'll know exactly why. if there isn't, you'll know exactly where to look. every call is backed by patterns from thousands of companies that went through YC, a16z, and the programs that built the defining startups of the last decade.",
     mockup: (
       <div style={{ fontFamily: 'Inter, sans-serif' }}>
-        <div style={{ color: '#6b7280', fontSize: '11px', letterSpacing: '0.08em', textTransform: 'uppercase', marginBottom: '16px' }}>Market Signal</div>
+        <div style={{ color: '#6b7280', fontSize: '11px', letterSpacing: '0.08em', textTransform: 'uppercase', marginBottom: '16px' }}>market signal</div>
         <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '20px' }}>
           <div style={{ width: 10, height: 10, borderRadius: '50%', background: '#22c55e', boxShadow: '0 0 8px #22c55e' }} />
-          <span style={{ color: '#ffffff', fontSize: '15px', fontWeight: 600 }}>Opening confirmed</span>
+          <span style={{ color: '#ffffff', fontSize: '15px', fontWeight: 600 }}>opening confirmed</span>
         </div>
         {[
           { label: 'Reddit threads analyzed', value: '847' },
-          { label: 'Competitors mapped', value: '12' },
-          { label: 'Gap identified', value: 'Yes' },
+          { label: 'competitors mapped', value: '12' },
+          { label: 'gap identified', value: 'yes' },
         ].map((row) => (
           <div key={row.label} style={{ display: 'flex', justifyContent: 'space-between', padding: '10px 0', borderBottom: '1px solid rgba(255,255,255,0.06)' }}>
             <span style={{ color: '#9ca3af', fontSize: '13px' }}>{row.label}</span>
@@ -36,26 +36,26 @@ const FEATURES: Feature[] = [
           </div>
         ))}
         <div style={{ marginTop: '18px', background: 'rgba(255,107,53,0.1)', border: '1px solid rgba(255,107,53,0.2)', borderRadius: '10px', padding: '12px 14px' }}>
-          <div style={{ color: '#FF6B35', fontSize: '12px', fontWeight: 600, marginBottom: '4px' }}>Verdict</div>
+          <div style={{ color: '#FF6B35', fontSize: '12px', fontWeight: 600, marginBottom: '4px' }}>verdict</div>
           <div style={{ color: '#e5e7eb', fontSize: '13px', lineHeight: 1.5 }}>There&apos;s a real gap in async team communication for remote-first companies under 50 people.</div>
         </div>
       </div>
     ),
   },
   {
-    label: 'Plan',
-    short: 'Your week, ready to execute.',
+    label: 'plan',
+    short: 'your week, ready to execute.',
     description:
-      'The moment research returns a signal, tethr builds your first week from the ground up, every task specific to your idea, every item with a clear finish line and a time estimate. Push back on anything and the plan adjusts around you.',
+      'the moment research returns a signal, tethr builds your first week from the ground up, every task specific to your idea, every item with a clear finish line and a time estimate. push back on anything and the plan adjusts around you.',
     mockup: (
       <div style={{ fontFamily: 'Inter, sans-serif' }}>
-        <div style={{ color: '#6b7280', fontSize: '11px', letterSpacing: '0.08em', textTransform: 'uppercase', marginBottom: '16px' }}>Week 1 Plan</div>
+        <div style={{ color: '#6b7280', fontSize: '11px', letterSpacing: '0.08em', textTransform: 'uppercase', marginBottom: '16px' }}>week 1 plan</div>
         {[
-          { day: 'Mon', task: 'Interview 3 potential users from Reddit thread', time: '2h', done: true },
-          { day: 'Tue', task: 'Set up landing page with core value prop', time: '3h', done: true },
-          { day: 'Wed', task: 'Draft outreach to 10 Slack community leads', time: '1.5h', done: false },
-          { day: 'Thu', task: 'Run first demo call, record feedback', time: '2h', done: false },
-          { day: 'Fri', task: 'Synthesize week — what to cut, what to double down', time: '1h', done: false },
+          { day: 'Mon', task: 'interview 3 potential users from Reddit thread', time: '2h', done: true },
+          { day: 'Tue', task: 'set up landing page with core value prop', time: '3h', done: true },
+          { day: 'Wed', task: 'draft outreach to 10 Slack community leads', time: '1.5h', done: false },
+          { day: 'Thu', task: 'run first demo call, record feedback', time: '2h', done: false },
+          { day: 'Fri', task: 'synthesize week — what to cut, what to double down', time: '1h', done: false },
         ].map((item) => (
           <div key={item.day} style={{ display: 'flex', alignItems: 'flex-start', gap: '12px', padding: '10px 0', borderBottom: '1px solid rgba(255,255,255,0.06)' }}>
             <div style={{ width: '28px', flexShrink: 0, color: '#6b7280', fontSize: '11px', fontWeight: 600, paddingTop: '1px' }}>{item.day}</div>
@@ -69,18 +69,18 @@ const FEATURES: Feature[] = [
     ),
   },
   {
-    label: 'Build',
-    short: 'The work gets done.',
+    label: 'build',
+    short: 'the work gets done.',
     description:
-      'Tethr designs the experiments, writes the outreach, drafts the applications, and builds the materials. You review everything before it goes anywhere, but by the time it reaches you, the hard part is already done.',
+      'tethr designs the experiments, writes the outreach, drafts the applications, and builds the materials. you review everything before it goes anywhere, but by the time it reaches you, the hard part is already done.',
     mockup: (
       <div style={{ fontFamily: 'Inter, sans-serif' }}>
-        <div style={{ color: '#6b7280', fontSize: '11px', letterSpacing: '0.08em', textTransform: 'uppercase', marginBottom: '16px' }}>Deliverables ready</div>
+        <div style={{ color: '#6b7280', fontSize: '11px', letterSpacing: '0.08em', textTransform: 'uppercase', marginBottom: '16px' }}>deliverables ready</div>
         {[
-          { name: 'Landing page copy', status: 'Ready to review', color: '#22c55e' },
-          { name: 'YC application draft', status: 'Ready to review', color: '#22c55e' },
-          { name: 'Outreach sequence (10)', status: 'Ready to review', color: '#22c55e' },
-          { name: 'Pitch deck outline', status: 'In progress', color: '#f59e0b' },
+          { name: 'landing page copy', status: 'ready to review', color: '#22c55e' },
+          { name: 'YC application draft', status: 'ready to review', color: '#22c55e' },
+          { name: 'outreach sequence (10)', status: 'ready to review', color: '#22c55e' },
+          { name: 'pitch deck outline', status: 'in progress', color: '#f59e0b' },
         ].map((item) => (
           <div key={item.name} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '11px 0', borderBottom: '1px solid rgba(255,255,255,0.06)' }}>
             <span style={{ color: '#e5e7eb', fontSize: '13px' }}>{item.name}</span>
@@ -89,25 +89,25 @@ const FEATURES: Feature[] = [
         ))}
         <div style={{ marginTop: '16px', display: 'flex', gap: '8px' }}>
           <div style={{ flex: 1, background: 'rgba(255,107,53,0.12)', border: '1px solid rgba(255,107,53,0.25)', borderRadius: '8px', padding: '10px 12px', textAlign: 'center', cursor: 'pointer' }}>
-            <div style={{ color: '#FF6B35', fontSize: '13px', fontWeight: 600 }}>Review all</div>
+            <div style={{ color: '#FF6B35', fontSize: '13px', fontWeight: 600 }}>review all</div>
           </div>
         </div>
       </div>
     ),
   },
   {
-    label: 'Launch',
-    short: 'First customers, found and reached.',
+    label: 'launch',
+    short: 'first customers, found and reached.',
     description:
-      "Tethr identifies who's most likely to care about what you're building, finds where they actually spend time, and writes messages calibrated to each one. You approve what goes out.",
+      "tethr identifies who's most likely to care about what you're building, finds where they actually spend time, and writes messages calibrated to each one. you approve what goes out.",
     mockup: (
       <div style={{ fontFamily: 'Inter, sans-serif' }}>
-        <div style={{ color: '#6b7280', fontSize: '11px', letterSpacing: '0.08em', textTransform: 'uppercase', marginBottom: '16px' }}>Outreach pipeline</div>
+        <div style={{ color: '#6b7280', fontSize: '11px', letterSpacing: '0.08em', textTransform: 'uppercase', marginBottom: '16px' }}>outreach pipeline</div>
         {[
-          { name: 'Sarah K.', role: 'Head of Ops @ Loom', status: 'Sent', replied: true },
-          { name: 'Marcus T.', role: 'Founder @ Linear clone', status: 'Sent', replied: false },
-          { name: 'Priya M.', role: 'PM @ Notion', status: 'Pending approval', replied: false },
-          { name: 'James R.', role: 'CTO @ 12-person startup', status: 'Pending approval', replied: false },
+          { name: 'sarah k.', role: 'head of ops @ loom', status: 'sent', replied: true },
+          { name: 'marcus t.', role: 'founder @ linear clone', status: 'sent', replied: false },
+          { name: 'priya m.', role: 'pm @ Notion', status: 'pending approval', replied: false },
+          { name: 'james r.', role: 'cto @ 12-person startup', status: 'pending approval', replied: false },
         ].map((person) => (
           <div key={person.name} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '10px 0', borderBottom: '1px solid rgba(255,255,255,0.06)' }}>
             <div>
@@ -116,7 +116,7 @@ const FEATURES: Feature[] = [
             </div>
             <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
               {person.replied && <div style={{ width: 6, height: 6, borderRadius: '50%', background: '#22c55e' }} />}
-              <span style={{ color: person.replied ? '#22c55e' : person.status === 'Sent' ? '#9ca3af' : '#FF6B35', fontSize: '12px' }}>{person.replied ? 'Replied' : person.status}</span>
+              <span style={{ color: person.replied ? '#22c55e' : person.status === 'sent' ? '#9ca3af' : '#FF6B35', fontSize: '12px' }}>{person.replied ? 'replied' : person.status}</span>
             </div>
           </div>
         ))}
@@ -124,17 +124,17 @@ const FEATURES: Feature[] = [
     ),
   },
   {
-    label: 'Run',
-    short: 'It never stops.',
+    label: 'run',
+    short: 'it never stops.',
     description:
-      'Competitor moves, pricing changes, what your early users are saying in public, what to fix and what to ignore. Tethr monitors all of it and tells you exactly what to act on, every single week.',
+      'competitor moves, pricing changes, what your early users are saying in public, what to fix and what to ignore. tethr monitors all of it and tells you exactly what to act on, every single week.',
     mockup: (
       <div style={{ fontFamily: 'Inter, sans-serif' }}>
-        <div style={{ color: '#6b7280', fontSize: '11px', letterSpacing: '0.08em', textTransform: 'uppercase', marginBottom: '16px' }}>Weekly digest</div>
+        <div style={{ color: '#6b7280', fontSize: '11px', letterSpacing: '0.08em', textTransform: 'uppercase', marginBottom: '16px' }}>weekly digest</div>
         {[
-          { tag: 'Competitor', text: 'Linear dropped pricing by 20%. Your positioning still holds on async-first teams.', urgent: false },
-          { tag: 'Users', text: '3 users mentioned "too many notifications" in public tweets. Worth a UX pass.', urgent: true },
-          { tag: 'Market', text: 'New Reddit thread: 340 upvotes on exactly the problem you solve.', urgent: false },
+          { tag: 'competitor', text: 'Linear dropped pricing by 20%. your positioning still holds on async-first teams.', urgent: false },
+          { tag: 'users', text: '3 users mentioned "too many notifications" in public tweets. worth a UX pass.', urgent: true },
+          { tag: 'market', text: 'new Reddit thread: 340 upvotes on exactly the problem you solve.', urgent: false },
         ].map((item, i) => (
           <div key={i} style={{ marginBottom: '12px', background: 'rgba(255,255,255,0.04)', borderRadius: '10px', padding: '12px 14px', border: item.urgent ? '1px solid rgba(255,107,53,0.2)' : '1px solid rgba(255,255,255,0.06)' }}>
             <div style={{ color: item.urgent ? '#FF6B35' : '#9ca3af', fontSize: '11px', fontWeight: 600, marginBottom: '5px', letterSpacing: '0.05em' }}>{item.tag}</div>
@@ -145,19 +145,19 @@ const FEATURES: Feature[] = [
     ),
   },
   {
-    label: 'Stay with you',
-    short: 'Build from your phone.',
+    label: 'stay with you',
+    short: 'build from your phone.',
     description:
-      'Text tethr what you need and get real executed work back in seconds, from anywhere. Research run, landing page, YC app, pitch deck, outreach. All of it over iMessage or WhatsApp. From your bed, from class, or from wherever. Your entire company travels with you.',
+      'text tethr what you need and get real executed work back in seconds, from anywhere. research run, landing page, YC app, pitch deck, outreach. all of it over iMessage or WhatsApp. from your bed, from class, or from wherever. your entire company travels with you.',
     mockup: (
       <div style={{ fontFamily: 'Inter, sans-serif' }}>
         <div style={{ color: '#6b7280', fontSize: '11px', letterSpacing: '0.08em', textTransform: 'uppercase', marginBottom: '16px' }}>iMessage · tethr_</div>
         {[
           { from: 'you', text: 'draft my YC app based on everything we know' },
-          { from: 'tethr', text: 'On it. Give me 40 seconds.' },
-          { from: 'tethr', text: 'Done. 8 questions answered, backed by your research. Review it here →' },
+          { from: 'tethr', text: 'on it. give me 40 seconds.' },
+          { from: 'tethr', text: 'done. 8 questions answered, backed by your research. review it here →' },
           { from: 'you', text: 'tweak the "why now" section, add the Reddit data' },
-          { from: 'tethr', text: 'Updated. The stat about 340 upvotes is now in Q3.' },
+          { from: 'tethr', text: 'updated. the stat about 340 upvotes is now in q3.' },
         ].map((msg, i) => (
           <div key={i} style={{ display: 'flex', justifyContent: msg.from === 'you' ? 'flex-end' : 'flex-start', marginBottom: '8px' }}>
             <div style={{
@@ -224,11 +224,7 @@ export default function HowItWorks() {
         boxSizing: 'border-box',
       }}>
         <div style={{ marginBottom: '56px' }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '16px' }}>
-            <div style={{ height: '1px', width: '24px', background: 'rgba(255,107,53,0.6)' }} />
-            <span style={{ fontSize: '11px', fontWeight: 600, letterSpacing: '.18em', color: '#FF6B35', textTransform: 'uppercase' }}>What tethr does</span>
-          </div>
-          <h2 style={{ fontSize: 'clamp(32px,4vw,48px)', fontWeight: 800, color: '#0f172a', marginBottom: 0 }}>Everything it takes to build.</h2>
+          <h2 style={{ fontSize: 'clamp(32px,4vw,48px)', fontWeight: 800, color: '#0f172a', marginBottom: 0 }}>everything it takes to build.</h2>
         </div>
 
         <div className="hiw-grid" style={{ display: 'flex', flexDirection: 'row', gap: '48px', alignItems: 'stretch' }}>

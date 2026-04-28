@@ -26,21 +26,17 @@ export default function CtaSection() {
   useEffect(() => {
     const atmo = atmoRef.current
     if (!atmo) return
-
     const vw = window.innerWidth
     const colW = 160
     const numCols = Math.ceil(vw / colW) + 1
-
     for (let c = 0; c < numCols; c++) {
       const col = document.createElement('div')
       col.className = 'col'
       col.style.width = colW + 'px'
-
       const numLines = Math.ceil(window.innerHeight / 20) + 2
       for (let r = 0; r < numLines; r++) {
         const span = document.createElement('span')
-        const line = LINES[Math.floor(Math.random() * LINES.length)]
-        span.textContent = line
+        span.textContent = LINES[Math.floor(Math.random() * LINES.length)]
         if (Math.random() > 0.75) span.classList.add('hi')
         col.appendChild(span)
       }
@@ -55,17 +51,16 @@ export default function CtaSection() {
       <div className="cta-shadow"></div>
 
       <div className="cta-page">
-        <div className="cta-topbar">
-        </div>
+        <div className="cta-topbar"></div>
 
         <div className="cta-hero">
           <div className="cta-hero-left">
-            <h1>Stop trying to<br />figure it out alone.</h1>
-            <p>Every founder who shipped had someone in their corner who already knew the context.</p>
+            <h1>stop figuring it out alone.</h1>
+            <p>every founder who shipped had someone in their corner who already knew the context.</p>
           </div>
           <div className="cta-hero-right">
             <a href="#waitlist" className="btn-white">
-              Start building
+              start building
               <svg viewBox="0 0 13 13">
                 <path d="M2 6.5h9M8 3l3.5 3.5L8 10" />
               </svg>
@@ -76,9 +71,9 @@ export default function CtaSection() {
         <div className="cta-card">
           <div className="cta-tabs">
             {[
-              { id: '1', label: 'What do I do tomorrow' },
-              { id: '2', label: 'Is this worth building' },
-              { id: '3', label: 'Draft my YC app' },
+              { id: '1', label: 'the first week' },
+              { id: '2', label: 'what actually happens' },
+              { id: '3', label: 'what comes next' },
             ].map(t => (
               <div
                 key={t.id}
@@ -91,120 +86,108 @@ export default function CtaSection() {
           </div>
 
           <div className="cta-card-body">
+
+            {/* ── LEFT PANE ── */}
             <div className="cta-lpane">
+
+              {/* Tab 1 left */}
               <div className={`pc${activeTab === '1' ? ' on' : ''}`}>
-                <div className="pc-tag">Action plan</div>
-                <h3 className="pc-hed">Wake up knowing exactly what to do.</h3>
-                <p className="pc-body">tethr turns your goals into a specific daily plan. Every task ships with a draft already written. No blank docs. No guessing.</p>
+                <h3 className="pc-hed">you have eleven tabs open. the doc has four bullet points and nobody has seen it yet.</h3>
+                <p className="pc-body">this is where every founder ends up. the idea felt real on day one, but by day seven the doc has four bullet points and nothing has moved. you did not run out of motivation. you ran out of direction, because there was nobody to sit down with you and tell you what to actually do tomorrow morning.</p>
                 <ul className="pc-list">
-                  <li><div className="cta-dot"></div>Post to r/startups. Draft written. Ready to go.</li>
-                  <li><div className="cta-dot"></div>Cold DM three potential users. Templates done.</li>
-                  <li><div className="cta-dot"></div>Finish your YC app. Why now section drafted.</li>
-                  <li><div className="cta-dot"></div>Time estimates for everything.</li>
-                </ul>
+               </ul>
               </div>
 
+              {/* Tab 2 left */}
               <div className={`pc${activeTab === '2' ? ' on' : ''}`}>
-                <div className="pc-tag">Market research</div>
-                <h3 className="pc-hed">Real signal in 40 seconds. Actual data.</h3>
-                <p className="pc-body">tethr searches Reddit, forums, and competitor sites for what your customers are frustrated about. Returns signal, gaps, and a clear read on timing.</p>
+                <h3 className="pc-hed">you describe the idea. tethr goes and executes.</h3>
+                <p className="pc-body">it does not generate a plan and hand it back to you. tethr pulls Reddit threads where your future customers are already complaining, maps every real competitor with their pricing and gaps, and builds your week one around your specific idea. then it drafts the outreach, writes the copy, and prepares the applications. you review everything before anything goes out. that is the whole model.</p>
                 <ul className="pc-list">
-                  <li><div className="cta-dot"></div>847 Reddit threads analyzed. Strong signal confirmed.</li>
-                  <li><div className="cta-dot"></div>12 competitor gaps. Here they are.</li>
-                  <li><div className="cta-dot"></div>Pain clusters mapped. Top six listed.</li>
-                  <li><div className="cta-dot"></div>Done before you finish your coffee.</li>
+                  <li><div className="cta-dot"></div>finds Reddit threads where your future customers are already complaining</li>
+                  <li><div className="cta-dot"></div>maps every competitor with pricing, weaknesses, and gaps called out</li>
+                  <li><div className="cta-dot"></div>builds a week one plan calibrated to your specific idea</li>
+                  <li><div className="cta-dot"></div>drafts the outreach, landing page copy, and YC application answers</li>
+                  <li><div className="cta-dot"></div>sends nothing without your explicit approval first</li>
                 </ul>
               </div>
 
+              {/* Tab 3 left — "the difference" copy */}
               <div className={`pc${activeTab === '3' ? ' on' : ''}`}>
-                <div className="pc-tag">YC application</div>
-                <h3 className="pc-hed">All eight questions answered. Backed by your research.</h3>
-                <p className="pc-body">tethr writes the full application using your research, your signal, and your competitive positioning. Ask for a revision. Get it in seconds.</p>
-                <ul className="pc-list">
-                  <li><div className="cta-dot"></div>8 questions drafted in under a minute.</li>
-                  <li><div className="cta-dot"></div>Why now built from your Reddit data.</li>
-                  <li><div className="cta-dot"></div>Revise any section. Just ask.</li>
+                <h3 className="pc-hed" style={{ marginBottom: 16 }}>every founder who shipped had someone already in it with them.</h3>
+                <p className="pc-body">someone who picked up exactly where the last session ended, who followed up when they went quiet, and who drafted the things that felt too hard to start. tethr builds a compounding picture of how you work, and every session it gets a little sharper.</p>
+                <ul className="pc-list" style={{ marginTop: 12 }}>
+                  <li><div className="cta-dot"></div>picks up exactly where you left off, every single session</li>
+                  <li><div className="cta-dot"></div>follows up when you go quiet, because going quiet is how ideas die</li>
+                  <li><div className="cta-dot"></div>drafts the hard things: cold emails, YC applications, landing page copy</li>
+                  <li><div className="cta-dot"></div>tells you when a competitor makes a move or Reddit shifts on your market</li>
                 </ul>
-                <div className="pc-cta">
-                  <a href="#waitlist" className="btn-dark">
-                    Start building
-                    <svg viewBox="0 0 13 13">
-                      <path d="M2 6.5h9M8 3l3.5 3.5L8 10" />
-                    </svg>
-                  </a>
-                  <span className="pc-fine">Free to start. No credit card.</span>
+                <div className="pc-cta" style={{ marginTop: 16 }}>
+                 
                 </div>
               </div>
             </div>
 
+            {/* ── RIGHT PANE ── */}
             <div className="cta-rpane">
-              <div className={`rp rp1${activeTab === '1' ? ' on' : ''}`}>
-                <div className="rp-lbl">Tomorrow / your plan</div>
-                <div className="pi">
-                  <div className="pi-n">01</div>
-                  <div className="pi-c">
-                    <div className="pi-t">Post to r/startups. Question format.</div>
-                    <div className="pi-m">15 min / Draft ready</div>
-                  </div>
-                  <div className="pi-chk done"></div>
+
+              {/* Tab 1 right — stats */}
+              <div className={`rp rp1${activeTab === '1' ? ' on' : ''}`} style={{ display: activeTab === '1' ? 'flex' : 'none', flexDirection: 'column', justifyContent: 'center', padding: '32px 40px', gap: 28, overflowY: 'hidden' }}>
+                <div className="rs">
+                  <div className="rs-n" style={{ fontSize: 36 }}>90<sup style={{ color: '#F5622D' }}>%</sup></div>
+                  <div className="rs-l">of startups fail. the number has not moved in a decade.</div>
+                  <div className="rs-bar" style={{ height: 3, background: 'rgba(26,24,21,0.08)' }}><div className="rs-fill" style={{ width: '90%', height: 3 }}></div></div>
                 </div>
-                <div className="pi">
-                  <div className="pi-n">02</div>
-                  <div className="pi-c">
-                    <div className="pi-t">Cold DM 3 potential early users.</div>
-                    <div className="pi-m">20 min / Templates ready</div>
-                  </div>
-                  <div className="pi-chk done"></div>
+                <div className="rs">
+                  <div className="rs-n" style={{ fontSize: 36 }}>18<sup style={{ color: '#F5622D' }}>%</sup></div>
+                  <div className="rs-l">first-time founder success rate. it doubles with the right support.</div>
+                  <div className="rs-bar" style={{ height: 3, background: 'rgba(26,24,21,0.08)' }}><div className="rs-fill" style={{ width: '18%', height: 3 }}></div></div>
                 </div>
-                <div className="pi">
-                  <div className="pi-n">03</div>
-                  <div className="pi-c">
-                    <div className="pi-t">Finish YC app. Why now section.</div>
-                    <div className="pi-m">45 min / Draft ready</div>
-                  </div>
-                  <div className="pi-chk"></div>
+                <div className="rs">
+                  <div className="rs-n" style={{ fontSize: 36 }}>42<sup style={{ color: '#F5622D' }}>%</sup></div>
+                  <div className="rs-l">built something nobody wanted, because they never talked to a real customer.</div>
+                  <div className="rs-bar" style={{ height: 3, background: 'rgba(26,24,21,0.08)' }}><div className="rs-fill" style={{ width: '42%', height: 3 }}></div></div>
                 </div>
               </div>
 
-              <div className={`rp rp2${activeTab === '2' ? ' on' : ''}`}>
-                <div className="rs">
-                  <div className="rs-n">90<sup>%</sup></div>
-                  <div className="rs-l">say the next step is harder than having the idea</div>
-                  <div className="rs-bar"><div className="rs-fill" style={{ width: '90%' }}></div></div>
-                </div>
-                <div className="rs">
-                  <div className="rs-n">72<sup>%</sup></div>
-                  <div className="rs-l">stall before building anything in the first six weeks</div>
-                  <div className="rs-bar"><div className="rs-fill" style={{ width: '72%' }}></div></div>
-                </div>
-                <div className="rs">
-                  <div className="rs-n">3<sup>x</sup></div>
-                  <div className="rs-l">more likely to reach first customers with a thinking partner</div>
-                  <div className="rs-bar"><div className="rs-fill" style={{ width: '60%' }}></div></div>
-                </div>
-              </div>
-
-              <div className={`rp rp3${activeTab === '3' ? ' on' : ''}`}>
+              {/* Tab 2 right — chat mockup */}
+              <div className={`rp rp3${activeTab === '2' ? ' on' : ''}`}>
                 <div className="ch-bar">
                   <div className="ch-dots">
-                    <div className="ch-dot" style={{ background: '#ff5f57' }}></div>
-                    <div className="ch-dot" style={{ background: '#febc2e' }}></div>
-                    <div className="ch-dot" style={{ background: '#28c840' }}></div>
+                    <div className="ch-dot" style={{ background: '#ff5f56' }}></div>
+                    <div className="ch-dot" style={{ background: '#ffbd2e' }}></div>
+                    <div className="ch-dot" style={{ background: '#27c93f' }}></div>
                   </div>
                   <div className="ch-lbl">tethr_ / active session</div>
+                  <div style={{ width: 40 }}></div>
                 </div>
                 <div className="msgs">
-                  <div className="m u">draft my YC app using everything we know</div>
-                  <div className="m t">On it. Back in 40 seconds.</div>
-                  <div className="m t">Done. All 8 questions answered. Why now built from your Reddit data. Review here.</div>
-                  <div className="m u">make the why now section sharper. use the 847 thread data.</div>
-                  <div className="typing-wrap">
-                    <div className="dp"></div>
-                    <div className="dp"></div>
-                    <div className="dp"></div>
-                  </div>
+                  <div className="m u">my idea is a tool that helps solo consultants send invoices that clients actually open</div>
+                  <div className="m t">on it. give me a minute.</div>
+                  <div className="m t" style={{ whiteSpace: 'pre-line', fontSize: 11, lineHeight: 1.65 }}>{`found 23 threads across r/freelance and r/consulting with the same complaint. invoices get ignored because they look like accounting documents rather than conversations. freshbooks, wave, and stripe invoicing all treat it as a billing problem. none of them treat it as a communication problem. the gap is real. here is your week one plan.`}</div>
+                  <div className="m u">what do i do tomorrow</div>
+                  <div className="m t">talk to five freelancers who have a late payment right now and ask what they sent. do not mention the product yet.</div>
                 </div>
               </div>
+
+              {/* Tab 3 right — outcome cards */}
+              <div className={`rp rp2${activeTab === '3' ? ' on' : ''}`} style={{ display: activeTab === '3' ? 'flex' : 'none', flexDirection: 'column', padding: '28px 32px', justifyContent: 'center', overflowY: 'auto' }}>
+                <div>
+                  <div style={{ background: 'white', border: '1px solid rgba(26,24,21,0.08)', borderRadius: 12, padding: '20px 24px', marginBottom: 12, boxShadow: '0 1px 4px rgba(26,24,21,0.05)' }}>
+                    <div style={{ fontSize: 10, fontWeight: 700, color: '#F5622D', letterSpacing: '0.12em', textTransform: 'uppercase', marginBottom: 8 }}>week 1</div>
+                    <div style={{ fontSize: 13, color: 'rgba(26,24,21,0.65)', lineHeight: 1.7 }}>you have talked to five real people and you know exactly what they hate about what already exists.</div>
+                  </div>
+                  <div style={{ background: 'white', border: '1px solid rgba(26,24,21,0.08)', borderRadius: 12, padding: '20px 24px', marginBottom: 12, boxShadow: '0 1px 4px rgba(26,24,21,0.05)' }}>
+                    <div style={{ fontSize: 10, fontWeight: 700, color: '#F5622D', letterSpacing: '0.12em', textTransform: 'uppercase', marginBottom: 8 }}>week 4</div>
+                    <div style={{ fontSize: 13, color: 'rgba(26,24,21,0.65)', lineHeight: 1.7 }}>you have a waitlist and tethr drafted every piece of outreach. you never stared at a blank document.</div>
+                  </div>
+                  <div style={{ background: 'white', border: '1px solid rgba(26,24,21,0.08)', borderRadius: 12, padding: '20px 24px', marginBottom: 12, boxShadow: '0 1px 4px rgba(26,24,21,0.05)' }}>
+                    <div style={{ fontSize: 10, fontWeight: 700, color: '#F5622D', letterSpacing: '0.12em', textTransform: 'uppercase', marginBottom: 8 }}>Month 3</div>
+                    <div style={{ fontSize: 13, color: 'rgba(26,24,21,0.65)', lineHeight: 1.7 }}>you are iterating on real feedback, your YC application is drafted, and every answer in it came from your actual research sessions with tethr.</div>
+                  </div>
+                </div>
+                <div style={{ fontSize: 12, color: 'rgba(26,24,21,0.4)', marginTop: 8, fontStyle: 'italic' }}>this is what building without stalling looks like.</div>
+              </div>
+
             </div>
           </div>
         </div>
