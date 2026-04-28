@@ -2,15 +2,9 @@
 
 import { useEffect, useRef, useState } from 'react'
 
-const SECTION_THEMES: Record<string, '#ffffff' | '#0f172a'> = {
-  top: '#ffffff',
-  how: '#0f172a',
-  features: '#ffffff',
-}
-
 export default function Nav() {
   const navRef = useRef<HTMLElement>(null)
-  const [textColor, setTextColor] = useState<'#ffffff' | '#0f172a'>('#ffffff')
+  const [isDark, setIsDark] = useState(false)
   const [hovered, setHovered] = useState<string | null>(null)
 
   useEffect(() => {
@@ -23,26 +17,28 @@ export default function Nav() {
     }
     window.addEventListener('scroll', onScroll, { passive: true })
 
-    const observers: IntersectionObserver[] = []
+    const howEl = document.getElementById('how')
+    let observer: IntersectionObserver | null = null
 
-    Object.entries(SECTION_THEMES).forEach(([id, color]) => {
-      const el = document.getElementById(id)
-      if (!el) return
-      const io = new IntersectionObserver(
+    if (howEl) {
+      observer = new IntersectionObserver(
         ([entry]) => {
-          if (entry.isIntersecting) setTextColor(color)
+          setIsDark(entry.isIntersecting)
         },
-        { rootMargin: '-40% 0px -40% 0px', threshold: 0 }
+        { rootMargin: '-56px 0px 0px 0px', threshold: 0 }
       )
-      io.observe(el)
-      observers.push(io)
-    })
+      observer.observe(howEl)
+    }
 
     return () => {
       window.removeEventListener('scroll', onScroll)
-      observers.forEach((io) => io.disconnect())
+      observer?.disconnect()
     }
   }, [])
+
+  const linkColor = isDark ? '#0f172a' : 'rgba(255,255,255,0.9)'
+  const linkHoverColor = isDark ? '#0f172a' : '#ffffff'
+  const underlineColor = isDark ? '#0f172a' : '#ffffff'
 
   return (
     <nav
@@ -55,13 +51,21 @@ export default function Nav() {
         left: '50%',
         transform: 'translateX(-50%)',
         zIndex: 100,
-        color: textColor,
         padding: '6px 12px',
         gap: '16px',
+        background: isDark ? 'rgba(255,255,255,0.7)' : 'rgba(255,255,255,0.08)',
+        backdropFilter: 'blur(0.5px) saturate(180%)',
+        WebkitBackdropFilter: 'blur(0.5px) saturate(180%)',
+        border: isDark ? '1px solid rgba(0,0,0,0.12)' : '1px solid rgba(255,255,255,0.45)',
+        transition: 'background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease',
       }}
     >
-      <a href="#" className="nav-logo" style={{ color: '#ffffff', fontSize: '11px' }}>
-        tethr<span className="underscore" style={{ color: '#ffffff' }}>_</span>
+      <a
+        href="#"
+        className="nav-logo"
+        style={{ fontSize: '11px', color: isDark ? '#0f172a' : '#ffffff' }}
+      >
+        tethr<span className="underscore" style={{ color: '#FF6B35' }}>_</span>
       </a>
       <ul className="nav-links" style={{ gap: '16px' }}>
         <li>
@@ -70,17 +74,19 @@ export default function Nav() {
             onMouseEnter={() => setHovered('how')}
             onMouseLeave={() => setHovered(null)}
             style={{
-              color: '#ffffff',
+              color: hovered === 'how' ? linkHoverColor : linkColor,
               fontSize: '11px',
+              fontWeight: 500,
               textDecoration: 'none',
               position: 'relative',
               display: 'inline-block',
               paddingBottom: '3px',
               pointerEvents: 'auto',
               zIndex: 10,
+              transition: 'color 0.3s ease',
             }}
           >
-            how it works
+            the product
             <svg
               style={{
                 position: 'absolute',
@@ -96,7 +102,7 @@ export default function Nav() {
             >
               <path
                 d="M0,4 Q25,1 50,4 Q75,7 100,4"
-                stroke="#ffffff"
+                stroke={underlineColor}
                 strokeWidth="1.5"
                 fill="none"
                 strokeLinecap="round"
@@ -111,21 +117,23 @@ export default function Nav() {
         </li>
         <li>
           <a
-            href="#features"
+            href="/story"
             onMouseEnter={() => setHovered('built')}
             onMouseLeave={() => setHovered(null)}
             style={{
-              color: '#ffffff',
+              color: hovered === 'built' ? linkHoverColor : linkColor,
               fontSize: '11px',
+              fontWeight: 500,
               textDecoration: 'none',
               position: 'relative',
               display: 'inline-block',
               paddingBottom: '3px',
               pointerEvents: 'auto',
               zIndex: 10,
+              transition: 'color 0.3s ease',
             }}
           >
-            built different
+            the story
             <svg
               style={{
                 position: 'absolute',
@@ -141,58 +149,13 @@ export default function Nav() {
             >
               <path
                 d="M0,4 Q25,1 50,4 Q75,7 100,4"
-                stroke="#ffffff"
+                stroke={underlineColor}
                 strokeWidth="1.5"
                 fill="none"
                 strokeLinecap="round"
                 style={{
                   strokeDasharray: 110,
                   strokeDashoffset: hovered === 'built' ? 0 : 110,
-                  transition: 'stroke-dashoffset 0.4s ease',
-                }}
-              />
-            </svg>
-          </a>
-        </li>
-        <li>
-          <a
-            href="#waitlist"
-            onMouseEnter={() => setHovered('founders')}
-            onMouseLeave={() => setHovered(null)}
-            style={{
-              color: '#ffffff',
-              fontSize: '11px',
-              textDecoration: 'none',
-              position: 'relative',
-              display: 'inline-block',
-              paddingBottom: '3px',
-              pointerEvents: 'auto',
-              zIndex: 10,
-            }}
-          >
-            for founders
-            <svg
-              style={{
-                position: 'absolute',
-                bottom: '-4px',
-                left: 0,
-                width: '100%',
-                height: '8px',
-                overflow: 'visible',
-                pointerEvents: 'none',
-              }}
-              viewBox="0 0 100 8"
-              preserveAspectRatio="none"
-            >
-              <path
-                d="M0,4 Q25,1 50,4 Q75,7 100,4"
-                stroke="#ffffff"
-                strokeWidth="1.5"
-                fill="none"
-                strokeLinecap="round"
-                style={{
-                  strokeDasharray: 110,
-                  strokeDashoffset: hovered === 'founders' ? 0 : 110,
                   transition: 'stroke-dashoffset 0.4s ease',
                 }}
               />

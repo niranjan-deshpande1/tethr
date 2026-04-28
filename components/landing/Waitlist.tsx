@@ -12,10 +12,6 @@ export default function Waitlist() {
   const ivRef = useRef<ReturnType<typeof setInterval> | null>(null)
   const lastScrollY = useRef(0)
   const typedRef = useRef('')
-  const hasSnappedRef = useRef(false)
-  const scrollLockedRef = useRef(false)
-  const lockedScrollY = useRef(0)
-
 
   const [heroOpacity, setHeroOpacity] = useState(1)
   const [wordmarkOpacity, setWordmarkOpacity] = useState(0)
@@ -45,7 +41,6 @@ export default function Waitlist() {
       setError('please enter a valid email')
       return
     }
-    if (!supabase) { setDone(true); return }
     const { error: sbError } = await supabase
       .from('waitlist')
       .insert([{ email }])
@@ -175,11 +170,6 @@ export default function Waitlist() {
     }
 
     const handleScroll = () => {
-      if (scrollLockedRef.current) {
-        window.scrollTo(0, lockedScrollY.current)
-        return
-      }
-
       const currentY = window.scrollY
       const scrollingDown = currentY > lastScrollY.current
       lastScrollY.current = currentY
@@ -189,13 +179,6 @@ export default function Waitlist() {
       const inView = rect.top < window.innerHeight && rect.bottom > 0
 
       if (inView && scrollingDown && phaseRef.current === 'idle') {
-        if (!hasSnappedRef.current) {
-          hasSnappedRef.current = true
-          lockedScrollY.current = section.offsetTop
-          window.scrollTo({ top: section.offsetTop, behavior: 'smooth' })
-          scrollLockedRef.current = true
-          setTimeout(() => { scrollLockedRef.current = false }, 500)
-        }
         startForward()
       } else if (!inView && !scrollingDown && phaseRef.current !== 'idle') {
         startReverse()

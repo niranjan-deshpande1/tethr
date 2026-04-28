@@ -18,15 +18,16 @@ export default function LandingPage() {
         overflowX: 'hidden',
         position: 'relative',
         minHeight: '100vh',
+        scrollSnapType: 'y proximity',
       }}
     >
       <GradientBackground />
       <Nav />
-      <div style={{ scrollSnapAlign: 'start', scrollSnapStop: 'always' }}><Hero /></div>
-      <div style={{ scrollSnapAlign: 'start', scrollSnapStop: 'always' }}><HowItWorks /></div>
-      <div style={{ scrollSnapAlign: 'start', scrollSnapStop: 'always' }}><Ecosystem /></div>
-      <div style={{ scrollSnapAlign: 'start', scrollSnapStop: 'always' }}><CtaSection /></div>
-      <div style={{ scrollSnapAlign: 'start', scrollSnapStop: 'always' }}><Waitlist /></div>
+      <Hero />
+      <HowItWorks />
+      <Ecosystem />
+      <CtaSection />
+      <div style={{ scrollSnapAlign: 'start', scrollSnapStop: 'normal' }}><Waitlist /></div>
       <Footer />
     </div>
   )

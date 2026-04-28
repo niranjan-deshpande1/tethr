@@ -13,10 +13,10 @@ function GlassCard({ cardStyle, label, children }: GlassCardProps) {
     <div
       style={{
         position: 'absolute',
-        borderRadius: 20,
+        borderRadius: 24,
         overflow: 'hidden',
         boxShadow: '0 6px 24px rgba(0,0,0,0.2)',
-        width: 200,
+        width: 240,
         cursor: 'default',
         ...cardStyle,
       }}
@@ -31,13 +31,13 @@ function GlassCard({ cardStyle, label, children }: GlassCardProps) {
         zIndex: 1,
       }} />
       {/* glass-content layer */}
-      <div style={{ position: 'relative', zIndex: 2, padding: '12px 16px', color: '#ffffff', fontSize: 12 }}>
+      <div style={{ position: 'relative', zIndex: 2, padding: '14px 19px', color: '#ffffff', fontSize: 14 }}>
         <div style={{
-          fontSize: 10,
+          fontSize: 12,
           fontWeight: 700,
           letterSpacing: '0.1em',
           color: '#FF6B35',
-          marginBottom: 8,
+          marginBottom: 10,
           textTransform: 'uppercase',
         }}>
           {label}
@@ -82,25 +82,24 @@ export default function Hero() {
         position: 'relative',
         zIndex: 1,
       }}>
-        <h1 className="hero-h1" style={{ color: '#ffffff', fontSize: 'clamp(24px,3.75vw,44px)' }}>Your startup idea<br />deserves more than<br />advice.</h1>
+        <h1 className="hero-h1" style={{ color: '#ffffff', fontSize: 'clamp(24px,3.75vw,44px)' }}>your startup idea<br />deserves more than<br />advice.</h1>
         <p className="hero-sub" style={{ color: '#ffffff', fontSize: '12px', marginBottom: '16px' }}>meet tethr, your ai cofounder<br />it does the work, while you make the decision</p>
         <div className="hero-ctas" style={{ transform: 'scale(0.75)', transformOrigin: 'center' }}>
-          <GravityButton label="See how it works" href="#how" color1="#1a1a1a" color2="#2a2a2a" />
-          <GravityButton label="Start building" href="#waitlist" />
+          <GravityButton label="see how it works" href="#how" color1="#1a1a1a" color2="#2a2a2a" />
+          <GravityButton label="start building" href="#waitlist" />
         </div>
-        <p className="hero-note" style={{ color: '#ffffff', fontSize: '11px' }}>Free to start — no credit card</p>
       </div>
 
 
       {/* Card 1: RESEARCH — top left */}
       <GlassCard
-        label="RESEARCH"
+        label="research"
         cardStyle={{ top: '10%', left: '2%', transform: 'rotate(-4deg)' }}
       >
-        <p style={{ fontSize: 12, lineHeight: 1.5, margin: '0 0 10px' }}>
+        <p style={{ fontSize: 14, lineHeight: 1.5, margin: '0 0 10px' }}>
           Strong signal. 847 Reddit threads, 12 competitor gaps identified.
         </p>
-        <span style={{ fontSize: 16, color: '#FF6B35', fontWeight: 700 }}>✓</span>
+        <span style={{ fontSize: 19, color: '#FF6B35', fontWeight: 700 }}>✓</span>
       </GlassCard>
 
       {/* Card 2: tethr_ — top right */}
@@ -111,9 +110,9 @@ export default function Hero() {
         <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
           <div style={{
             background: 'rgba(20,20,30,0.72)',
-            borderRadius: '14px 14px 14px 4px',
-            padding: '8px 12px',
-            fontSize: 12,
+            borderRadius: '17px 17px 17px 5px',
+            padding: '10px 14px',
+            fontSize: 14,
             lineHeight: 1.4,
             alignSelf: 'flex-start',
           }}>
@@ -121,71 +120,71 @@ export default function Hero() {
           </div>
           <div style={{
             background: '#FF6B35',
-            borderRadius: '14px 14px 4px 14px',
-            padding: '8px 12px',
-            fontSize: 12,
+            borderRadius: '17px 17px 5px 17px',
+            padding: '10px 14px',
+            fontSize: 14,
             lineHeight: 1.4,
             alignSelf: 'flex-end',
           }}>
-            On it. Pulling your research now.
+            on it. pulling your research now.
           </div>
         </div>
       </GlassCard>
 
       {/* Card 3: OUTREACH — bottom left */}
       <GlassCard
-        label="OUTREACH"
+        label="outreach"
         cardStyle={{ bottom: '18%', left: '3%', transform: 'rotate(-2deg)' }}
       >
-        <p style={{ fontSize: 12, lineHeight: 1.5, margin: '0 0 12px' }}>
+        <p style={{ fontSize: 14, lineHeight: 1.5, margin: '0 0 12px' }}>
           3 founder messages ready to send.
         </p>
         <div style={{ display: 'flex', gap: 8 }}>
           <button style={{
             background: '#FF6B35',
             border: 'none',
-            borderRadius: 8,
-            padding: '6px 14px',
+            borderRadius: 10,
+            padding: '7px 17px',
             color: '#ffffff',
-            fontSize: 12,
+            fontSize: 14,
             fontWeight: 600,
             cursor: 'pointer',
             fontFamily: 'inherit',
           }}>
-            Confirm
+            confirm
           </button>
           <button style={{
             background: 'rgba(255,255,255,0.15)',
             border: '1px solid rgba(255,255,255,0.25)',
-            borderRadius: 8,
-            padding: '6px 14px',
+            borderRadius: 10,
+            padding: '7px 17px',
             color: '#ffffff',
-            fontSize: 12,
+            fontSize: 14,
             fontWeight: 600,
             cursor: 'pointer',
             fontFamily: 'inherit',
           }}>
-            Edit
+            edit
           </button>
         </div>
       </GlassCard>
 
       {/* Card 4: THIS WEEK — bottom right */}
       <GlassCard
-        label="THIS WEEK"
+        label="this week"
         cardStyle={{ bottom: '15%', right: '3%', transform: 'rotate(4deg)' }}
       >
         <div style={{ display: 'flex', alignItems: 'flex-start', gap: 10 }}>
           <div style={{
-            width: 18,
-            height: 18,
+            width: 22,
+            height: 22,
             borderRadius: '50%',
             border: '2px solid rgba(255,255,255,0.5)',
             flexShrink: 0,
             marginTop: 2,
           }} />
-          <p style={{ fontSize: 12, lineHeight: 1.5, margin: 0 }}>
-            → Post in r/startups — question format. Est. 15 min.
+          <p style={{ fontSize: 14, lineHeight: 1.5, margin: 0 }}>
+            → post in r/startups — question format. est. 15 min.
           </p>
         </div>
       </GlassCard>
